@@ -95,7 +95,44 @@ namespace TPMatematicaSuperiorSIEL
             List<List<double>> matrizCoeficientes = new List<List<double>>();
             List<double> incognitas;
              List<double> terminosIndependientes;
+
+             cargarMatrizCoeficientes(ref matrizCoeficientes,tamañoMatriz);
             
+        }
+
+        void cargarMatrizCoeficientes(ref List<List<double>> matrizCoeficientes, int tamañoMatriz)
+        {
+            List<List<double>> matrizAux = new List<List<double>>();
+            List<double> listaAux= new List<double>(); 
+            bool errorDeCarga = false;
+           
+            for (int i = 0; i < tamañoMatriz; i++)
+            {
+                listaAux = new List<double>();
+                for (int j = 0; j < tamañoMatriz; j++)
+                {
+                    if (!errorDeCarga)
+                    {
+                         double respuesta;
+                         Double.TryParse(this.Controls[(j + i * tamañoMatriz).ToString()].Text.ToString(),out respuesta);
+                         if (respuesta == null)
+                         {
+                             errorDeCarga = true;
+                             MessageBox.Show("La matriz de coeficientes solo debe contener numeros", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                         }
+                         else
+                         {
+                             listaAux.Add(respuesta);
+                         }
+                       
+                       
+                        
+                    }
+                  
+                 }
+                matrizAux.Add(listaAux);
+            }
+            matrizCoeficientes = matrizAux;
         }
 
         tiposMatrizCoeficientes analizarMatrizCoeficientes(List<List<double>> matrizCoeficientes, int tamaño)
