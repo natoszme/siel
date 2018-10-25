@@ -38,7 +38,7 @@ namespace TPMatematicaSuperiorSIEL
             // 
             // btnResolver
             // 
-            this.btnResolver.Location = new System.Drawing.Point(171, 212);
+            this.btnResolver.Location = new System.Drawing.Point(246, 279);
             this.btnResolver.Name = "btnResolver";
             this.btnResolver.Size = new System.Drawing.Size(75, 23);
             this.btnResolver.TabIndex = 0;
@@ -50,7 +50,7 @@ namespace TPMatematicaSuperiorSIEL
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(284, 261);
+            this.ClientSize = new System.Drawing.Size(356, 338);
             this.Controls.Add(this.btnResolver);
             this.Name = "Form1";
             this.Text = "Resolucion";

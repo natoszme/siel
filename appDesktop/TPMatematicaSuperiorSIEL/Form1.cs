@@ -35,16 +35,55 @@ namespace TPMatematicaSuperiorSIEL
         {
             int posicionBaseX = 30;
             int posicionBaseY = 30;
-            int distanciaEntreTextBoxX = 15;
-            int distanciaEntreTextBoxY = 15;
+            int distanciaEntreTextBoxX = 20;
+            int distanciaEntreTextBoxY = 20;
             int tamanioTxtX = 20;
             int tamanioTxtY = 20;
+
+           /* Label lbl = new Label();
+            lbl.Text = "Coeficientes";
+            lbl.SetBounds(posicionBaseX, 10, 150, tamanioTxtY);
+            this.Controls.Add(lbl);*/
+
             for (int i = 0; i < largo*largo; i++)
             {
                 TextBox txt = new TextBox();
                 txt.Name = i.ToString();
                 int posX = posicionBaseX + (i % largo) * (distanciaEntreTextBoxX+tamanioTxtX);
                 int posY = posicionBaseY + (i/largo) * (distanciaEntreTextBoxY+ tamanioTxtY);
+                txt.SetBounds(posX, posY, tamanioTxtX, tamanioTxtY);
+                this.Controls.Add(txt);
+
+                Label lblX = new Label();
+                lblX.Text = "X" + i%largo+1;
+                int posXlbl = posicionBaseX + (i % largo) * (distanciaEntreTextBoxX + tamanioTxtX) + tamanioTxtX;
+                int posYlbl = posicionBaseY + (i / largo) * (distanciaEntreTextBoxY + tamanioTxtY);
+                lblX.SetBounds(posXlbl, posYlbl, tamanioTxtX, tamanioTxtY);
+                this.Controls.Add(lblX);
+
+            }
+
+            int offsetTerminosIndependientes = 40;
+            /*Label lblIndependientes = new Label();
+            lblIndependientes.Text = "Terminos independientes";
+            int posXlblInd = posicionBaseX + largo * (distanciaEntreTextBoxX + tamanioTxtX) + offsetTerminosIndependientes - 40;
+            lblIndependientes.SetBounds(posXlblInd, 10, 300, tamanioTxtY);
+            this.Controls.Add(lblIndependientes);
+            */
+            for (int i = 0; i < largo; i++)
+            {
+
+                Label lblX = new Label();
+                lblX.Text = "=" ;
+                int posXlbl = posicionBaseX + largo * (distanciaEntreTextBoxX + tamanioTxtX) + offsetTerminosIndependientes/2;
+                int posYlbl = posicionBaseY + i * (distanciaEntreTextBoxY + tamanioTxtY);
+                lblX.SetBounds(posXlbl, posYlbl, tamanioTxtX, tamanioTxtY);
+                this.Controls.Add(lblX);
+
+                TextBox txt = new TextBox();
+                txt.Name = "independiente" + i.ToString();
+                int posX = posicionBaseX + largo * (distanciaEntreTextBoxX + tamanioTxtX) + offsetTerminosIndependientes;
+                int posY = posicionBaseY + i * (distanciaEntreTextBoxY + tamanioTxtY);
                 txt.SetBounds(posX, posY, tamanioTxtX, tamanioTxtY);
                 this.Controls.Add(txt);
             }
