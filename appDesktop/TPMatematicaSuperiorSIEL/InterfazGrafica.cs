@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace TPMatematicaSuperiorSIEL
 {
-    public partial class Form1 : Form
+    public partial class InterfazGrafica : Form
     {
-        int tamañoMatriz = 5;
+        int tamañoMatriz;
         bool metodoJacobi = true;
         enum metodoDeResolucion { jacobi, gaussSeidel };
         enum tiposMatrizCoeficientes { dominante = 0, estrictamenteDominante = 1, noDominante = 2 };
@@ -21,8 +21,9 @@ namespace TPMatematicaSuperiorSIEL
         List<double> incognitas;
         List<double> terminosIndependientes;
 
-        public Form1()
+        public InterfazGrafica(int cantidadEcuaciones)
         {
+            tamañoMatriz = cantidadEcuaciones;
             InitializeComponent();
         }
 
@@ -131,6 +132,11 @@ namespace TPMatematicaSuperiorSIEL
                 resolverSIELporJacobi(matrizCoeficientes, tamañoMatrizCoeficientes, terminosIndependientes, proximasIncognitas);
             }
 
+
+        }
+
+        private void radioButton1_CheckedChanged(object sender, EventArgs e)
+        {
 
         }
 
