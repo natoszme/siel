@@ -25,12 +25,11 @@ namespace TPMatematicaSuperiorSIEL
                 InterfazGrafica formRoles = new InterfazGrafica(cantidadEcuaciones);
                 this.Hide();
                 formRoles.Show();
-            }catch(Exception ex){
-                MessageBox.Show("Debe ingresar un numero", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-            
-        }
-
-       
+            catch(Exception ex)
+            {
+                MessageBox.Show("Debe ingresar un numero", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }            
+        }       
     }
 }
