@@ -36,7 +36,6 @@ namespace TPMatematicaSuperiorSIEL
             this.btnResolver = new System.Windows.Forms.Button();
             this.rdbGaussSeidel = new System.Windows.Forms.RadioButton();
             this.rdbJacobi = new System.Windows.Forms.RadioButton();
-            this.label1 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // btnResolver
@@ -74,21 +73,11 @@ namespace TPMatematicaSuperiorSIEL
             this.rdbJacobi.UseVisualStyleBackColor = true;
             this.rdbJacobi.CheckedChanged += new System.EventHandler(this.radioButton1_CheckedChanged);
             // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(57, 235);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(35, 13);
-            this.label1.TabIndex = 3;
-            this.label1.Text = "label1";
-            // 
             // InterfazGrafica
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(356, 338);
-            this.Controls.Add(this.label1);
             this.Controls.Add(this.rdbGaussSeidel);
             this.Controls.Add(this.rdbJacobi);
             this.Controls.Add(this.btnResolver);
@@ -105,7 +94,6 @@ namespace TPMatematicaSuperiorSIEL
         private System.Windows.Forms.Button btnResolver;
         private System.Windows.Forms.RadioButton rdbJacobi;
         private System.Windows.Forms.RadioButton rdbGaussSeidel;
-        private System.Windows.Forms.Label label1;
     }
 }
 

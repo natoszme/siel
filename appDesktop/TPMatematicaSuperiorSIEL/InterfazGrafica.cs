@@ -85,14 +85,19 @@ namespace TPMatematicaSuperiorSIEL
             List<double> incognitas;
             List<double> terminosIndependientes;
 
-             cargarMatrizCoeficientes(ref matrizCoeficientes,tamañoMatriz);
+            matrizCoeficientes = cargarMatrizCoeficientes();
+
+            if (matrizCoeficientes != null)
+            {
+                
+            }
             
         }
 
-        void cargarMatrizCoeficientes(ref List<List<double>> matrizCoeficientes, int tamañoMatriz)
+        private List<List<double>> cargarMatrizCoeficientes()
         {
-            List<List<double>> matrizAux = new List<List<double>>();
-            List<double> listaAux= new List<double>(); 
+            List<List<double>> matrizCoeficientes = new List<List<double>>();
+            List<double> listaAux = new List<double>(); 
            
             for (int i = 0; i < tamañoMatriz; i++)
             {
@@ -104,19 +109,18 @@ namespace TPMatematicaSuperiorSIEL
                     if (double.IsNaN(respuesta))
                     {
                         MessageBox.Show("La matriz de coeficientes solo debe contener numeros", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        return;
+                        return null;
                     }
                     else
                     {
                         listaAux.Add(respuesta);
                     }
-
-                    label1.Text = respuesta.ToString();
-                    return;
                 }
-                matrizAux.Add(listaAux);
+
+                matrizCoeficientes.Add(listaAux);
             }
-            matrizCoeficientes = matrizAux;
+
+            return matrizCoeficientes;
         }
 
         private double intetnarObtenerCoeficiente(int i, int j)
