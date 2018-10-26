@@ -23,10 +23,10 @@ namespace TPMatematicaSuperiorSIEL
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            generarInputs(tamañoMatriz);
+            generarInputs();
         }
 
-        void generarInputs(int largo)
+        void generarInputs()
         {
             int posicionBaseX = 30;
             int posicionBaseY = 30;
@@ -35,36 +35,36 @@ namespace TPMatematicaSuperiorSIEL
             int tamanioTxtX = 20;
             int tamanioTxtY = 20;
 
-            for (int i = 0; i < largo*largo; i++)
+            for (int i = 0; i < tamañoMatriz * tamañoMatriz; i++)
             {
                 Label lblX = new Label();
-                lblX.Text = "X" + i % largo + 1;
-                int posXlbl = posicionBaseX + (i % largo) * (distanciaEntreTextBoxX + tamanioTxtX) + tamanioTxtX;
-                int posYlbl = posicionBaseY + (i / largo) * (distanciaEntreTextBoxY + tamanioTxtY);
+                lblX.Text = "X" + i % tamañoMatriz + 1;
+                int posXlbl = posicionBaseX + (i % tamañoMatriz) * (distanciaEntreTextBoxX + tamanioTxtX) + tamanioTxtX;
+                int posYlbl = posicionBaseY + (i / tamañoMatriz) * (distanciaEntreTextBoxY + tamanioTxtY);
                 lblX.SetBounds(posXlbl, posYlbl, tamanioTxtX, tamanioTxtY);
                 this.Controls.Add(lblX);
 
                 TextBox txt = new TextBox();
                 txt.Name = "coeficiente" + i.ToString();
-                int posX = posicionBaseX + (i % largo) * (distanciaEntreTextBoxX+tamanioTxtX);
-                int posY = posicionBaseY + (i/largo) * (distanciaEntreTextBoxY+ tamanioTxtY);
+                int posX = posicionBaseX + (i % tamañoMatriz) * (distanciaEntreTextBoxX + tamanioTxtX);
+                int posY = posicionBaseY + (i / tamañoMatriz) * (distanciaEntreTextBoxY + tamanioTxtY);
                 txt.SetBounds(posX, posY, tamanioTxtX, tamanioTxtY);
                 this.Controls.Add(txt);
             }
 
             int offsetTerminosIndependientes = 40;
-            for (int i = 0; i < largo; i++)
+            for (int i = 0; i < tamañoMatriz; i++)
             {
                 Label lblX = new Label();
                 lblX.Text = "=" ;
-                int posXlbl = posicionBaseX + largo * (distanciaEntreTextBoxX + tamanioTxtX) + offsetTerminosIndependientes/2;
+                int posXlbl = posicionBaseX + tamañoMatriz * (distanciaEntreTextBoxX + tamanioTxtX) + offsetTerminosIndependientes / 2;
                 int posYlbl = posicionBaseY + i * (distanciaEntreTextBoxY + tamanioTxtY);
                 lblX.SetBounds(posXlbl, posYlbl, tamanioTxtX, tamanioTxtY);
                 this.Controls.Add(lblX);
 
                 TextBox txt = new TextBox();
                 txt.Name = "independiente" + i.ToString();
-                int posX = posicionBaseX + largo * (distanciaEntreTextBoxX + tamanioTxtX) + offsetTerminosIndependientes;
+                int posX = posicionBaseX + tamañoMatriz * (distanciaEntreTextBoxX + tamanioTxtX) + offsetTerminosIndependientes;
                 int posY = posicionBaseY + i * (distanciaEntreTextBoxY + tamanioTxtY);
                 txt.SetBounds(posX, posY, tamanioTxtX, tamanioTxtY);
                 this.Controls.Add(txt);
@@ -74,39 +74,32 @@ namespace TPMatematicaSuperiorSIEL
         private void button1_Click(object sender, EventArgs e)
         {
             List<List<double>> matrizCoeficientes = cargarMatrizCoeficientes();
-            validarCoeficientes(matrizCoeficientes);            
+
+            if (matrizCoeficientes == null)
+            {
+                MessageBox.Show("La matriz de coeficientes debe contener sólo números", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
 
             List<double> terminosIndependientes = cargarVectorTerminosIndependientes();
-            validarTerminosIndependientes(terminosIndependientes);
 
-            List<double> incognitas;
-            if (rdbJacobi.Enabled == true)
+            if (terminosIndependientes == null)
             {
+                MessageBox.Show("La matriz de términos independientes debe contener sólo números", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
 
+            //TODO limpiar la tabla
+            
+            if (rdbJacobi.Checked == true)
+            {
+                MessageBox.Show("jacobi");
             }
             else
             {
 
             }
             
-        }
-
-        private void validarCoeficientes(List<List<double>> matrizCoeficientes)
-        {
-            if (matrizCoeficientes == null)
-            {
-                MessageBox.Show("La matriz de coeficientes debe contener sólo números", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
-            }
-        }
-
-        private void validarTerminosIndependientes(List<double> terminosIndependientes)
-        {
-            if (terminosIndependientes == null)
-            {
-                MessageBox.Show("La matriz de términos independientes debe contener sólo números", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
-            }
         }
 
         private List<List<double>> cargarMatrizCoeficientes()
@@ -171,7 +164,7 @@ namespace TPMatematicaSuperiorSIEL
             return respuesta;
         }
 
-        tiposMatrizCoeficientes analizarMatrizCoeficientes(List<List<double>> matrizCoeficientes, int tamaño)
+        tiposMatrizCoeficientes analizarMatrizCoeficientes(List<List<double>> matrizCoeficientes)
         {
 
             return tiposMatrizCoeficientes.dominante;
