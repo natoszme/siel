@@ -99,21 +99,40 @@ namespace TPMatematicaSuperiorSIEL
                 listaAux = new List<double>();
                 for (int j = 0; j < tamañoMatriz; j++)
                 {
-                         double respuesta;
-                         Double.TryParse(this.Controls[(j + i * tamañoMatriz).ToString()].Text.ToString(),out respuesta);
-                         if (respuesta == null)
-                         {
-                             MessageBox.Show("La matriz de coeficientes solo debe contener numeros", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                             return;
-                         }
-                         else
-                         {
-                             listaAux.Add(respuesta);
-                         } 
+                    double respuesta = intetnarObtenerCoeficiente(i, j);
+
+                    if (double.IsNaN(respuesta))
+                    {
+                        MessageBox.Show("La matriz de coeficientes solo debe contener numeros", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        return;
+                    }
+                    else
+                    {
+                        listaAux.Add(respuesta);
+                    }
+
+                    label1.Text = respuesta.ToString();
+                    return;
                 }
                 matrizAux.Add(listaAux);
             }
             matrizCoeficientes = matrizAux;
+        }
+
+        private double intetnarObtenerCoeficiente(int i, int j)
+        {
+            String input = this.Controls[(j + i * tamañoMatriz).ToString()].Text.ToString();
+            input = input.Replace('.', ',');
+            double respuesta;
+            try
+            {
+                respuesta = Convert.ToDouble(input);
+            }
+            catch(Exception e)
+            {
+                return double.NaN;
+            }
+            return respuesta;
         }
 
         tiposMatrizCoeficientes analizarMatrizCoeficientes(List<List<double>> matrizCoeficientes, int tamaño)
