@@ -43,26 +43,24 @@ namespace TPMatematicaSuperiorSIEL
 
             for (int i = 0; i < largo*largo; i++)
             {
-                TextBox txt = new TextBox();
-                txt.Name = i.ToString();
-                int posX = posicionBaseX + (i % largo) * (distanciaEntreTextBoxX+tamanioTxtX);
-                int posY = posicionBaseY + (i/largo) * (distanciaEntreTextBoxY+ tamanioTxtY);
-                txt.SetBounds(posX, posY, tamanioTxtX, tamanioTxtY);
-                this.Controls.Add(txt);
-
                 Label lblX = new Label();
-                lblX.Text = "X" + i%largo+1;
+                lblX.Text = "X" + i % largo + 1;
                 int posXlbl = posicionBaseX + (i % largo) * (distanciaEntreTextBoxX + tamanioTxtX) + tamanioTxtX;
                 int posYlbl = posicionBaseY + (i / largo) * (distanciaEntreTextBoxY + tamanioTxtY);
                 lblX.SetBounds(posXlbl, posYlbl, tamanioTxtX, tamanioTxtY);
                 this.Controls.Add(lblX);
 
+                TextBox txt = new TextBox();
+                txt.Name = "coeficiente" + i.ToString();
+                int posX = posicionBaseX + (i % largo) * (distanciaEntreTextBoxX+tamanioTxtX);
+                int posY = posicionBaseY + (i/largo) * (distanciaEntreTextBoxY+ tamanioTxtY);
+                txt.SetBounds(posX, posY, tamanioTxtX, tamanioTxtY);
+                this.Controls.Add(txt);
             }
 
             int offsetTerminosIndependientes = 40;
             for (int i = 0; i < largo; i++)
             {
-
                 Label lblX = new Label();
                 lblX.Text = "=" ;
                 int posXlbl = posicionBaseX + largo * (distanciaEntreTextBoxX + tamanioTxtX) + offsetTerminosIndependientes/2;
@@ -81,16 +79,23 @@ namespace TPMatematicaSuperiorSIEL
 
         private void button1_Click(object sender, EventArgs e)
         {
-            List<List<double>> matrizCoeficientes = new List<List<double>>();
-            List<double> incognitas;
-            List<double> terminosIndependientes;
+            List<List<double>> matrizCoeficientes = cargarMatrizCoeficientes();
 
-            matrizCoeficientes = cargarMatrizCoeficientes();
-
-            if (matrizCoeficientes != null)
+            if (matrizCoeficientes == null)
             {
-                
+                MessageBox.Show("La matriz de coeficientes debe contener sólo números", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
             }
+
+            List<double> terminosIndependientes = cargarVectorTerminosIndependientes();
+
+            if (terminosIndependientes == null)
+            {
+                MessageBox.Show("La matriz de términos independientes debe contener sólo números", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
+            //todo llamar al solver
+            List<double> incognitas;
             
         }
 
@@ -101,20 +106,11 @@ namespace TPMatematicaSuperiorSIEL
            
             for (int i = 0; i < tamañoMatriz; i++)
             {
-                listaAux = new List<double>();
-                for (int j = 0; j < tamañoMatriz; j++)
-                {
-                    double respuesta = intetnarObtenerCoeficiente(i, j);
+                listaAux = obtenerVectorDeInputs("coeficiente", i);
 
-                    if (double.IsNaN(respuesta))
-                    {
-                        MessageBox.Show("La matriz de coeficientes solo debe contener numeros", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        return null;
-                    }
-                    else
-                    {
-                        listaAux.Add(respuesta);
-                    }
+                if (listaAux == null)
+                {
+                    return null;
                 }
 
                 matrizCoeficientes.Add(listaAux);
@@ -123,14 +119,40 @@ namespace TPMatematicaSuperiorSIEL
             return matrizCoeficientes;
         }
 
-        private double intetnarObtenerCoeficiente(int i, int j)
+        private List<double> cargarVectorTerminosIndependientes()
         {
-            String input = this.Controls[(j + i * tamañoMatriz).ToString()].Text.ToString();
-            input = input.Replace('.', ',');
+            return obtenerVectorDeInputs("independiente", 0);
+        }
+
+        private List<double> obtenerVectorDeInputs(String nombreInput, int fila)
+        {
+            List<double> listaAux = new List<double>(); 
+
+            for (int i = 0; i < tamañoMatriz; i++)
+            {
+                double respuesta = intentarObtenerCoeficiente(nombreInput + (i + fila * tamañoMatriz).ToString());
+
+                if (double.IsNaN(respuesta))
+                {
+                    return null;
+                }
+                else
+                {
+                    listaAux.Add(respuesta);
+                }
+            }
+
+            return listaAux;
+        }
+
+        private double intentarObtenerCoeficiente(String nombreInput)
+        {
+            String valorInput = this.Controls[nombreInput.ToString()].Text.ToString();
+            valorInput = valorInput.Replace('.', ',');
             double respuesta;
             try
             {
-                respuesta = Convert.ToDouble(input);
+                respuesta = Convert.ToDouble(valorInput);
             }
             catch(Exception e)
             {
