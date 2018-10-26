@@ -41,11 +41,6 @@ namespace TPMatematicaSuperiorSIEL
             int tamanioTxtX = 20;
             int tamanioTxtY = 20;
 
-           /* Label lbl = new Label();
-            lbl.Text = "Coeficientes";
-            lbl.SetBounds(posicionBaseX, 10, 150, tamanioTxtY);
-            this.Controls.Add(lbl);*/
-
             for (int i = 0; i < largo*largo; i++)
             {
                 TextBox txt = new TextBox();
@@ -65,12 +60,6 @@ namespace TPMatematicaSuperiorSIEL
             }
 
             int offsetTerminosIndependientes = 40;
-            /*Label lblIndependientes = new Label();
-            lblIndependientes.Text = "Terminos independientes";
-            int posXlblInd = posicionBaseX + largo * (distanciaEntreTextBoxX + tamanioTxtX) + offsetTerminosIndependientes - 40;
-            lblIndependientes.SetBounds(posXlblInd, 10, 300, tamanioTxtY);
-            this.Controls.Add(lblIndependientes);
-            */
             for (int i = 0; i < largo; i++)
             {
 
@@ -94,7 +83,7 @@ namespace TPMatematicaSuperiorSIEL
         {
             List<List<double>> matrizCoeficientes = new List<List<double>>();
             List<double> incognitas;
-             List<double> terminosIndependientes;
+            List<double> terminosIndependientes;
 
              cargarMatrizCoeficientes(ref matrizCoeficientes,tamañoMatriz);
             
@@ -104,32 +93,24 @@ namespace TPMatematicaSuperiorSIEL
         {
             List<List<double>> matrizAux = new List<List<double>>();
             List<double> listaAux= new List<double>(); 
-            bool errorDeCarga = false;
            
             for (int i = 0; i < tamañoMatriz; i++)
             {
                 listaAux = new List<double>();
                 for (int j = 0; j < tamañoMatriz; j++)
                 {
-                    if (!errorDeCarga)
-                    {
                          double respuesta;
                          Double.TryParse(this.Controls[(j + i * tamañoMatriz).ToString()].Text.ToString(),out respuesta);
                          if (respuesta == null)
                          {
-                             errorDeCarga = true;
                              MessageBox.Show("La matriz de coeficientes solo debe contener numeros", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                             return;
                          }
                          else
                          {
                              listaAux.Add(respuesta);
-                         }
-                       
-                       
-                        
-                    }
-                  
-                 }
+                         } 
+                }
                 matrizAux.Add(listaAux);
             }
             matrizCoeficientes = matrizAux;
@@ -175,9 +156,7 @@ namespace TPMatematicaSuperiorSIEL
         private void radioButton1_CheckedChanged(object sender, EventArgs e)
         {
 
-        }
-
-      
+        }    
 
     }
 }
