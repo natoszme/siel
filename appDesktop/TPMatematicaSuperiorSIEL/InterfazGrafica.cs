@@ -13,7 +13,6 @@ namespace TPMatematicaSuperiorSIEL
     public partial class InterfazGrafica : Form
     {
         int tamañoMatriz;
-        enum tiposMatrizCoeficientes { dominante = 0, estrictamenteDominante = 1, noDominante = 2 };
 
         public InterfazGrafica(int cantidadEcuaciones)
         {
@@ -89,6 +88,12 @@ namespace TPMatematicaSuperiorSIEL
                 return;
             }
 
+            bool seguir = seguirEnBaseADiagonalidad(matrizCoeficientes);
+            if (!seguir)
+            {
+                return;
+            }
+
             //TODO limpiar la tabla
             
             if (rdbJacobi.Checked == true)
@@ -100,6 +105,26 @@ namespace TPMatematicaSuperiorSIEL
                 SielSolver.GaussSeidelSielSolver.resolver();
             }
             
+        }
+
+        private bool seguirEnBaseADiagonalidad(List<List<double>> coeficientes)
+        {
+            
+            AnalizadorMatriz.DiagonalidadMatriz tipoDiagonalidad = AnalizadorMatriz.obtenerDiagonalidad(coeficientes, tamañoMatriz);
+            lblTipoMatriz.Text = "Tipo de matriz: ";
+            lblTipoMatriz.Text += AnalizadorMatriz.aString(tipoDiagonalidad);
+
+            if (tipoDiagonalidad == AnalizadorMatriz.DiagonalidadMatriz.NoDominante)
+            {
+                DialogResult respuestaNoDiagonalidad = MessageBox.Show("La matriz de coeficientes ingresada no es diagonalmente dominante. ¿Desea modificarla?", "Información", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+
+                if (respuestaNoDiagonalidad == System.Windows.Forms.DialogResult.Yes)
+                {
+                    return false;
+                }
+            }
+
+            return true;
         }
 
         private List<List<double>> cargarMatrizCoeficientes()
@@ -162,13 +187,7 @@ namespace TPMatematicaSuperiorSIEL
                 return double.NaN;
             }
             return respuesta;
-        }
-
-        tiposMatrizCoeficientes analizarMatrizCoeficientes(List<List<double>> matrizCoeficientes)
-        {
-
-            return tiposMatrizCoeficientes.dominante;
-        }       
+        }  
 
         private void radioButton1_CheckedChanged(object sender, EventArgs e)
         {

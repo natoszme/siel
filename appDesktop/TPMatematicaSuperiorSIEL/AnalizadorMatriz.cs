@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace TPMatematicaSuperiorSIEL.AnalizadorMatriz
+namespace TPMatematicaSuperiorSIEL
 {
     public static class AnalizadorMatriz
     {
@@ -13,6 +13,21 @@ namespace TPMatematicaSuperiorSIEL.AnalizadorMatriz
             Dominante,
             EstrictamenteDominante,
             NoDominante
+        }
+
+        public static String aString(DiagonalidadMatriz tipo)
+        {
+            if (tipo == DiagonalidadMatriz.Dominante)
+            {
+                return "dominante";
+            }
+
+            if (tipo == DiagonalidadMatriz.EstrictamenteDominante)
+            {
+                return "estrictamente dominante";
+            }
+
+            return "no dominante";            
         }
 
         public static DiagonalidadMatriz obtenerDiagonalidad(List<List<double>> coeficientes, int tamanioMatriz)
