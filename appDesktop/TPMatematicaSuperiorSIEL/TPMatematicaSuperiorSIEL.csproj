@@ -50,6 +50,8 @@
     <Compile Include="InterfazGrafica.Designer.cs">
       <DependentUpon>InterfazGrafica.cs</DependentUpon>
     </Compile>
+    <Compile Include="SielSolver\GaussSeidelSielSolver.cs" />
+    <Compile Include="SielSolver\JacobiSielSolver.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="PuntoDeEntrada.cs">

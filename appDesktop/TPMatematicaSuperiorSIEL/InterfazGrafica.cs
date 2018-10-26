@@ -13,13 +13,7 @@ namespace TPMatematicaSuperiorSIEL
     public partial class InterfazGrafica : Form
     {
         int tamañoMatriz;
-        bool metodoJacobi = true;
-        enum metodoDeResolucion { jacobi, gaussSeidel };
         enum tiposMatrizCoeficientes { dominante = 0, estrictamenteDominante = 1, noDominante = 2 };
-
-        List<List<double>> matrizCoeficientes = new List<List<double>>();
-        List<double> incognitas;
-        List<double> terminosIndependientes;
 
         public InterfazGrafica(int cantidadEcuaciones)
         {
@@ -80,23 +74,39 @@ namespace TPMatematicaSuperiorSIEL
         private void button1_Click(object sender, EventArgs e)
         {
             List<List<double>> matrizCoeficientes = cargarMatrizCoeficientes();
+            validarCoeficientes(matrizCoeficientes);            
 
+            List<double> terminosIndependientes = cargarVectorTerminosIndependientes();
+            validarTerminosIndependientes(terminosIndependientes);
+
+            List<double> incognitas;
+            if (rdbJacobi.Enabled == true)
+            {
+
+            }
+            else
+            {
+
+            }
+            
+        }
+
+        private void validarCoeficientes(List<List<double>> matrizCoeficientes)
+        {
             if (matrizCoeficientes == null)
             {
                 MessageBox.Show("La matriz de coeficientes debe contener sólo números", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
+        }
 
-            List<double> terminosIndependientes = cargarVectorTerminosIndependientes();
-
+        private void validarTerminosIndependientes(List<double> terminosIndependientes)
+        {
             if (terminosIndependientes == null)
             {
                 MessageBox.Show("La matriz de términos independientes debe contener sólo números", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
             }
-
-            //todo llamar al solver
-            List<double> incognitas;
-            
         }
 
         private List<List<double>> cargarMatrizCoeficientes()
@@ -165,38 +175,7 @@ namespace TPMatematicaSuperiorSIEL
         {
 
             return tiposMatrizCoeficientes.dominante;
-        }
-
-        bool cumpleCriterioParo()
-        {
-            //Hay que codear el criterio de los errores para cortar y modificar la firma acordemente
-            return false;
-        }
-
-        public void resolverSIELporJacobi(List<List<double>> matrizCoeficientes, int tamañoMatrizCoeficientes, List<double> terminosIndependientes, List<double> incognitas)
-        {
-            if (!cumpleCriterioParo())
-            {
-                List<double> proximasIncognitas = new List<double>();
-                for (int i = 0; i < tamañoMatrizCoeficientes; i++)
-                {
-                    double proximoValor = terminosIndependientes[i];
-                    for (int j = 0; j < tamañoMatrizCoeficientes; j++)
-                    {
-                        if (i != j)
-                        {
-                            proximoValor -= matrizCoeficientes[i][j] * incognitas[j];
-                        }
-                    }
-                    proximoValor = proximoValor / matrizCoeficientes[i][i];
-                    proximasIncognitas.Insert(i, proximoValor);
-                }
-                System.Threading.Thread.Sleep(3);
-                resolverSIELporJacobi(matrizCoeficientes, tamañoMatrizCoeficientes, terminosIndependientes, proximasIncognitas);
-            }
-
-
-        }
+        }       
 
         private void radioButton1_CheckedChanged(object sender, EventArgs e)
         {
