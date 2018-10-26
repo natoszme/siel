@@ -93,11 +93,11 @@ namespace TPMatematicaSuperiorSIEL
             
             if (rdbJacobi.Checked == true)
             {
-                MessageBox.Show("jacobi");
+                //SielSolver.JacobiSielSolver.resolver();
             }
             else
             {
-
+                SielSolver.GaussSeidelSielSolver.resolver();
             }
             
         }
