@@ -95,14 +95,13 @@ namespace TPMatematicaSuperiorSIEL
             }
 
             //TODO limpiar la tabla
-            
             if (rdbJacobi.Checked == true)
             {
                 //SielSolver.JacobiSielSolver.resolver();
             }
             else
             {
-                SielSolver.GaussSeidelSielSolver.resolver();
+                //SielSolver.GaussSeidelSielSolver.resolver();
             }
             
         }
