@@ -12,8 +12,10 @@ namespace TPMatematicaSuperiorSIEL.SielSolver
 
         public SielSolver()
         {
-            criteriosDeParo.Add(new CriterioDeParo.CriterioAbsoluto());
-            criteriosDeParo.Add(new CriterioDeParo.CriterioRelativo());
+            const double epsilon = 0.001;
+            // TODO: obtener epsilon desde la UI
+            criteriosDeParo.Add(new CriterioDeParo.CriterioAbsoluto(epsilon));
+            criteriosDeParo.Add(new CriterioDeParo.CriterioRelativo(epsilon));
         }
 
         public void resolver(List<double> vectorInicial)

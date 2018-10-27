@@ -8,10 +8,12 @@ namespace TPMatematicaSuperiorSIEL.CriterioDeParo
 {
     public class CriterioAbsoluto : CriterioDeParo
     {
-        public bool hayQueSeguir(List<double> vectorAnterior, List<double> vectorActual)
+        public CriterioAbsoluto(double epsilon) : base(epsilon) { }
+
+        public override double valorDeReferencia(List<double> vectorAnterior, List<double> vectorActual)
         {
-            //TODO implementar
-            return true;
+            List<Double> vectorResultado = vectorActual.Zip(vectorAnterior, (actual, anterior) => actual - anterior).ToList();
+            return AnalizadorMatriz.normaInfinita(vectorResultado);
         }
     }
 }
