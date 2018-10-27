@@ -52,13 +52,14 @@ namespace TPMatematicaSuperiorSIEL
             }
 
             int offsetTerminosIndependientes = 40;
+            int posYlblIndependientes = 0;
             for (int i = 0; i < tamañoMatriz; i++)
             {
                 Label lblX = new Label();
                 lblX.Text = "=" ;
                 int posXlbl = posicionBaseX + tamañoMatriz * (distanciaEntreTextBoxX + tamanioTxtX) + offsetTerminosIndependientes / 2;
-                int posYlbl = posicionBaseY + i * (distanciaEntreTextBoxY + tamanioTxtY);
-                lblX.SetBounds(posXlbl, posYlbl, tamanioTxtX, tamanioTxtY);
+                posYlblIndependientes = posicionBaseY + i * (distanciaEntreTextBoxY + tamanioTxtY);
+                lblX.SetBounds(posXlbl, posYlblIndependientes, tamanioTxtX, tamanioTxtY);
                 this.Controls.Add(lblX);
 
                 TextBox txt = new TextBox();
@@ -69,12 +70,14 @@ namespace TPMatematicaSuperiorSIEL
                 this.Controls.Add(txt);
             }
 
+            //TODO agregar label para "Valores iniciales"
             for (int i = 0; i < tamañoMatriz; i++)
             {
                 TextBox txt = new TextBox();
                 txt.Name = "vectorInicial" + i.ToString();
-                int posX = posicionBaseX + tamañoMatriz * (distanciaEntreTextBoxX + tamanioTxtX) + offsetTerminosIndependientes;
-                int posY = posicionBaseY + i * (distanciaEntreTextBoxY + tamanioTxtY) + 100;
+                int posX = posicionBaseX + (i % tamañoMatriz) * (distanciaEntreTextBoxX + tamanioTxtX);
+                //TODO sacar el 50 harcodeado
+                int posY = posYlblIndependientes + 50;
                 txt.SetBounds(posX, posY, tamanioTxtX, tamanioTxtY);
                 this.Controls.Add(txt);
             }
@@ -98,6 +101,14 @@ namespace TPMatematicaSuperiorSIEL
                 return;
             }
 
+            List<double> valoresIniciales = cargarVectorValoresIniciales();
+
+            if (valoresIniciales == null)
+            {
+                MessageBox.Show("La matriz de valores iniciales debe contener sólo números", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
             bool seguir = seguirEnBaseADiagonalidad(matrizCoeficientes);
             if (!seguir)
             {
@@ -117,8 +128,7 @@ namespace TPMatematicaSuperiorSIEL
         }
 
         private bool seguirEnBaseADiagonalidad(List<List<double>> coeficientes)
-        {
-            
+        {            
             AnalizadorMatriz.DiagonalidadMatriz tipoDiagonalidad = AnalizadorMatriz.obtenerDiagonalidad(coeficientes, tamañoMatriz);
             lblTipoMatriz.Text = "Tipo de matriz: ";
             lblTipoMatriz.Text += AnalizadorMatriz.aString(tipoDiagonalidad);
@@ -159,6 +169,11 @@ namespace TPMatematicaSuperiorSIEL
         private List<double> cargarVectorTerminosIndependientes()
         {
             return obtenerVectorDeInputs("independiente", 0);
+        }
+
+        private List<double> cargarVectorValoresIniciales()
+        {
+            return obtenerVectorDeInputs("vectorInicial", 0);
         }
 
         private List<double> obtenerVectorDeInputs(String nombreInput, int fila)
