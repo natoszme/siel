@@ -20,6 +20,6 @@ namespace TPMatematicaSuperiorSIEL.CriterioDeParo
             return normaInfinita >= epsilon;
         }
 
-        public abstract double valorDeReferencia(List<double> vectorAnterior, List<double> vectorActual);
+        protected abstract double valorDeReferencia(List<double> vectorAnterior, List<double> vectorActual);
     }
 }

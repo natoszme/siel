@@ -10,7 +10,7 @@ namespace TPMatematicaSuperiorSIEL.CriterioDeParo
     {
         public CriterioAbsoluto(double epsilon) : base(epsilon) { }
 
-        public override double valorDeReferencia(List<double> vectorAnterior, List<double> vectorActual)
+        protected override double valorDeReferencia(List<double> vectorAnterior, List<double> vectorActual)
         {
             List<Double> vectorResultado = vectorActual.Zip(vectorAnterior, (actual, anterior) => actual - anterior).ToList();
             return AnalizadorMatriz.normaInfinita(vectorResultado);
