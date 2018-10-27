@@ -45,6 +45,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AnalizadorMatriz.cs" />
+    <Compile Include="CriterioDeParo\CriterioAbsoluto.cs" />
+    <Compile Include="CriterioDeParo\CriterioDeParo.cs" />
+    <Compile Include="CriterioDeParo\CriterioRelativo.cs" />
     <Compile Include="InterfazGrafica.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -61,6 +64,7 @@
     <Compile Include="PuntoDeEntrada.Designer.cs">
       <DependentUpon>PuntoDeEntrada.cs</DependentUpon>
     </Compile>
+    <Compile Include="SielSolver\SielSolver.cs" />
     <EmbeddedResource Include="InterfazGrafica.resx">
       <DependentUpon>InterfazGrafica.cs</DependentUpon>
     </EmbeddedResource>

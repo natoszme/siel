@@ -102,7 +102,7 @@ namespace TPMatematicaSuperiorSIEL
             }
             else
             {
-                SielSolver.GaussSeidelSielSolver.resolver();
+                SielSolver.GaussSeidelSielSolver.resolverSegunEstrategia();
             }
             
         }

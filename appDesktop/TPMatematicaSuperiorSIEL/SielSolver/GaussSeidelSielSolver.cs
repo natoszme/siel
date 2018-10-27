@@ -8,9 +8,9 @@ namespace TPMatematicaSuperiorSIEL.SielSolver
 {
     public static class GaussSeidelSielSolver
     {
-        public static void resolver()
+        public static void resolverSegunEstrategia()
         {
-
+            //TODO implementar
         }
     }
 }
