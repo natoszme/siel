@@ -68,5 +68,15 @@ namespace TPMatematicaSuperiorSIEL
 
             return DiagonalidadMatriz.Dominante;
         }
+
+        public static double normaInfinita(List<List<double>> coeficientes)
+        {
+            return coeficientes.Select(fila => fila.Sum()).Max();
+        }
+
+        public static double normaInfinita(List<double> coeficientes)
+        {
+            return coeficientes.Sum();
+        }
     }
 }
