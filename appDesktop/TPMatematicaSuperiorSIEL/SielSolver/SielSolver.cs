@@ -24,9 +24,12 @@ namespace TPMatematicaSuperiorSIEL.SielSolver
             //ese metodo tiene que devolver una lista de valores, para aplicarla aca:
             List<double> vectorCalculado = new List<double>();
             //vectorCalculado = resolverSegunEstrategia(//completar con los parametros);
+
+            // TODO: habria que mostrar en la UI si se puede o no seguir (con c/criterio)
+            // Tambien mostrar los pasos que se siguieron
             if (criteriosDeParo.Any(criterio => criterio.hayQueSeguir(vectorInicial, vectorCalculado)))
             {
-                //volver a llamar a este metodo con el valorInicial siendo el calculado
+                resolver(vectorCalculado);
             }
         }
 
