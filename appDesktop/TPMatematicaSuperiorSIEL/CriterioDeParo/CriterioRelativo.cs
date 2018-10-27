@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace TPMatematicaSuperiorSIEL.CriterioDeParo
 {
-    public class CriterioRelativo
+    public class CriterioRelativo : CriterioDeParo
     {
         public bool hayQueSeguir(List<double> vectorAnterior, List<double> vectorActual)
         {

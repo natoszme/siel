@@ -68,6 +68,16 @@ namespace TPMatematicaSuperiorSIEL
                 txt.SetBounds(posX, posY, tamanioTxtX, tamanioTxtY);
                 this.Controls.Add(txt);
             }
+
+            for (int i = 0; i < tamañoMatriz; i++)
+            {
+                TextBox txt = new TextBox();
+                txt.Name = "vectorInicial" + i.ToString();
+                int posX = posicionBaseX + tamañoMatriz * (distanciaEntreTextBoxX + tamanioTxtX) + offsetTerminosIndependientes;
+                int posY = posicionBaseY + i * (distanciaEntreTextBoxY + tamanioTxtY) + 100;
+                txt.SetBounds(posX, posY, tamanioTxtX, tamanioTxtY);
+                this.Controls.Add(txt);
+            }
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -97,11 +107,11 @@ namespace TPMatematicaSuperiorSIEL
             //TODO limpiar la tabla
             if (rdbJacobi.Checked == true)
             {
-                //SielSolver.JacobiSielSolver.resolverSegunEstrategia();
+                //new SielSolver.JacobiSielSolver().resolver();
             }
             else
             {
-                //SielSolver.GaussSeidelSielSolver.resolverSegunEstrategia();
+                //new SielSolver.GaussSeidelSielSolver().resolver();
             }
             
         }

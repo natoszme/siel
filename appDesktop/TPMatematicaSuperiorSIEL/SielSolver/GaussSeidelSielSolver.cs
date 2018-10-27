@@ -6,9 +6,11 @@ using System.Threading.Tasks;
 
 namespace TPMatematicaSuperiorSIEL.SielSolver
 {
-    public static class GaussSeidelSielSolver
+    public class GaussSeidelSielSolver : SielSolver
     {
-        public static void resolverSegunEstrategia(List<List<Double>> matrizCoeficientes, int tamanioMatrizCoeficientes, List<Double> terminosIndependientes, List<Double> incognitas)
+        public GaussSeidelSielSolver() : base() { }
+
+        protected override List<double> resolverSegunEstrategia(List<List<double>> matrizCoeficientes, int tamanioMatrizCoeficientes, List<double> terminosIndependientes, List<double> incognitas)
         {
                 for(int i = 0; i < tamanioMatrizCoeficientes; i++)
                 {
@@ -25,6 +27,9 @@ namespace TPMatematicaSuperiorSIEL.SielSolver
                 /*if (criterioConvergencia())
                     return;*/
                 resolverSegunEstrategia(matrizCoeficientes, tamanioMatrizCoeficientes, terminosIndependientes, incognitas);
+
+            //TODO
+            return null;
         }
     }
 }

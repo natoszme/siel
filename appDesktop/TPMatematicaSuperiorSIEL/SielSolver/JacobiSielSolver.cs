@@ -6,9 +6,11 @@ using System.Threading.Tasks;
 
 namespace TPMatematicaSuperiorSIEL.SielSolver
 {
-    public static class JacobiSielSolver
+    public class JacobiSielSolver : SielSolver
     {
-        public static void resolverSegunEstrategia(List<List<double>> matrizCoeficientes, int tamañoMatrizCoeficientes, List<double> terminosIndependientes, List<double> incognitas)
+        public JacobiSielSolver() : base() {}
+
+        protected override List<double> resolverSegunEstrategia(List<List<double>> matrizCoeficientes, int tamañoMatrizCoeficientes, List<double> terminosIndependientes, List<double> incognitas)
         {
             List<double> proximasIncognitas = new List<double>();
             for (int i = 0; i < tamañoMatrizCoeficientes; i++)
@@ -26,6 +28,9 @@ namespace TPMatematicaSuperiorSIEL.SielSolver
             }
             System.Threading.Thread.Sleep(3);
             //resolverSegunEstrategia(matrizCoeficientes, tamañoMatrizCoeficientes, terminosIndependientes, proximasIncognitas);
+
+            //TODO
+            return null;
         }
     }
 }
