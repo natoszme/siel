@@ -27,14 +27,14 @@ namespace TPMatematicaSuperiorSIEL
                 return "estrictamente dominante";
             }
 
-            return "no dominante";            
+            return "no dominante";
         }
 
         public static DiagonalidadMatriz obtenerDiagonalidad(List<List<double>> coeficientes, int tamanioMatriz)
         {
             bool esEstrictamenteDominante = true;
 
-            for (int fila = 0; fila < tamanioMatriz ; fila++)
+            for (int fila = 0; fila < tamanioMatriz; fila++)
             {
                 double coeficienteDeDiagonalPrincipal = coeficientes[fila][fila];
                 double sumaDeFila = 0;
@@ -43,7 +43,7 @@ namespace TPMatematicaSuperiorSIEL
                 {
                     if (fila != columna)
                     {
-                        sumaDeFila += coeficientes[fila][columna]; 
+                        sumaDeFila += coeficientes[fila][columna];
                     }
                 }
 
@@ -77,6 +77,21 @@ namespace TPMatematicaSuperiorSIEL
         public static double normaInfinita(List<double> coeficientes)
         {
             return coeficientes.Sum();
+        }
+
+        public static double norma1(List<List<double>> matriz, int tamanioMatriz)
+        {
+            List<double> sumatorias = new List<double>();
+            for (int columna = 0; columna < tamanioMatriz; columna++)
+            {
+                double valor = 0;
+                for (int fila = 0; fila < tamanioMatriz; fila++)
+                {
+                    valor += Math.Abs(matriz[fila][columna]);
+                }
+                sumatorias.Add(valor);
+            }
+            return sumatorias.Max();
         }
     }
 }
