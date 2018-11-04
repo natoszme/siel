@@ -54,6 +54,12 @@
     <Compile Include="InterfazGrafica.Designer.cs">
       <DependentUpon>InterfazGrafica.cs</DependentUpon>
     </Compile>
+    <Compile Include="Resultados.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Resultados.Designer.cs">
+      <DependentUpon>Resultados.cs</DependentUpon>
+    </Compile>
     <Compile Include="SielSolver\GaussSeidelSielSolver.cs" />
     <Compile Include="SielSolver\JacobiSielSolver.cs" />
     <Compile Include="Program.cs" />
@@ -79,6 +85,9 @@
     </Compile>
     <EmbeddedResource Include="PuntoDeEntrada.resx">
       <DependentUpon>PuntoDeEntrada.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resultados.resx">
+      <DependentUpon>Resultados.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
