@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
+
 
 namespace TPMatematicaSuperiorSIEL
 {
@@ -79,20 +81,34 @@ namespace TPMatematicaSuperiorSIEL
             return coeficientes.Sum();
         }
 
-        public static double norma1(List<List<double>> matriz, int tamanioMatriz)
+        public static double norma1(List<List<double>> matriz, int tamañoMatriz)
         {
-            List<double> sumatorias = new List<double>();
-            for (int columna = 0; columna < tamanioMatriz; columna++)
+            List<double> sumatoriasColumna = new List<double>();
+            for (int columna = 0; columna < tamañoMatriz; columna++)
             {
                 double valor = 0;
-                for (int fila = 0; fila < tamanioMatriz; fila++)
+                for (int fila = 0; fila < tamañoMatriz; fila++)
                 {
                     valor += Math.Abs(matriz[fila][columna]);
                 }
-                sumatorias.Add(valor);
+                sumatoriasColumna.Add(valor);
             }
-            return sumatorias.Max();
+            return sumatoriasColumna.Max();
         }
+
+        public static double norma2(List<List<double>> matrizCoeficientes, int tamañoMatriz) 
+        {
+            List<List<double>> mTranspuesta = matrizTranspuesta(matrizCoeficientes, tamañoMatriz);
+            double[,] matrixTranspuesta = paseDeListAMatriz(mTranspuesta, tamañoMatriz);
+            double[,] matrixCoeficientes = paseDeListAMatriz(matrizCoeficientes, tamañoMatriz);
+
+            // COMO HACER NORMA2 : RAIZ CUADRADA( MAYORAUTOVALOR(transp MATRIZCOEFICIENTES x matrizCoeficientes))
+            double[,] matrizProducto = multiplicarMatrices(matrixCoeficientes, matrixTranspuesta, tamañoMatriz);
+            double[] autovalores = calculoAutoValores(matrizProducto, tamañoMatriz);
+            double mayorAutovalor = autovalores.Max();
+            return Math.Sqrt(mayorAutovalor);
+        }
+
         public static List<List<double>> matrizTranspuesta(List<List<double>> matriz, int tamañoMatriz)
         {
             List<List<double>> matrizTranspuesta = new List<List<double>>();
@@ -113,21 +129,53 @@ namespace TPMatematicaSuperiorSIEL
             return matrizTranspuesta;
         }
 
-        public static double[,] paseDeListAMatriz(List<List<double>> matriz, int tamañoMatriz)
+        public static double[,] paseDeListAMatriz(List<List<double>> matrizCoeficientes, int tamañoMatriz)
         {
-            double[,] matrix = new double[tamañoMatriz, tamañoMatriz];
+            double[,] matriz = new double[tamañoMatriz, tamañoMatriz];
             double valor;
             for (int i = 0; i < tamañoMatriz; i++)
             {
                 for (int j = 0; j < tamañoMatriz; j++)
                 {
-                    valor = matriz[i][j];
-                    matrix[i, j] = valor;
-                   
+                    valor = matrizCoeficientes[i][j];
+                    matriz[i, j] = valor;                   
                 }
             }
 
-            return matrix;
+            return matriz;
+        }
+
+        public static double[] calculoAutoValores(double[,] matrizCoeficientes, int tamañoMatriz)
+        { 
+            double[] autoValores;
+            double[] parteImAutoValores;
+            double[,] autoVectores;
+            double[,] parteImAutoVectores;
+
+            bool autovaloresCreados = alglib.rmatrixevd(matrizCoeficientes,tamañoMatriz,0,out autoValores,out parteImAutoValores, out autoVectores, out parteImAutoVectores);
+
+            if (!autovaloresCreados) {
+                MessageBox.Show("No se pudieron calcular los autovalores", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return null;
+            }
+            return autoValores;
+        }
+
+        public static double[,] multiplicarMatrices(double[,] matriz1, double[,] matriz2,int tamañoMatriz)
+        {
+            int fila1, columna2, fila2columna1;
+            double[,] resultado = new double[tamañoMatriz, tamañoMatriz];
+            for (fila1 = 0; fila1 < tamañoMatriz; fila1++)
+            {
+                for (columna2 = 0; columna2 < tamañoMatriz; columna2++)
+                {
+                    for (fila2columna1 = 0; fila2columna1 < tamañoMatriz; fila2columna1++)
+                    {
+                        resultado[fila1,columna2] += matriz1[fila1,fila2columna1] * matriz2[fila2columna1,columna2];
+                    }
+                }
+            }
+            return resultado;
         }
     }
 }
