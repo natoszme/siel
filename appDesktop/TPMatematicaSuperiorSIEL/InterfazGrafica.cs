@@ -56,7 +56,7 @@ namespace TPMatematicaSuperiorSIEL
             for (int i = 0; i < tamañoMatriz; i++)
             {
                 Label lblX = new Label();
-                lblX.Text = "=" ;
+                lblX.Text = "=";
                 int posXlbl = posicionBaseX + tamañoMatriz * (distanciaEntreTextBoxX + tamanioTxtX) + offsetTerminosIndependientes / 2;
                 posYlblIndependientes = posicionBaseY + i * (distanciaEntreTextBoxY + tamanioTxtY);
                 lblX.SetBounds(posXlbl, posYlblIndependientes, tamanioTxtX, tamanioTxtY);
@@ -119,16 +119,18 @@ namespace TPMatematicaSuperiorSIEL
             if (rdbJacobi.Checked == true)
             {
                 //new SielSolver.JacobiSielSolver().resolver();
+
             }
             else
             {
                 //new SielSolver.GaussSeidelSielSolver().resolver();
+
             }
-            
+
         }
 
         private bool seguirEnBaseADiagonalidad(List<List<double>> coeficientes)
-        {            
+        {
             AnalizadorMatriz.DiagonalidadMatriz tipoDiagonalidad = AnalizadorMatriz.obtenerDiagonalidad(coeficientes, tamañoMatriz);
             lblTipoMatriz.Text = "Tipo de matriz: ";
             lblTipoMatriz.Text += AnalizadorMatriz.aString(tipoDiagonalidad);
@@ -149,8 +151,8 @@ namespace TPMatematicaSuperiorSIEL
         private List<List<double>> cargarMatrizCoeficientes()
         {
             List<List<double>> matrizCoeficientes = new List<List<double>>();
-            List<double> listaAux = new List<double>(); 
-           
+            List<double> listaAux = new List<double>();
+
             for (int i = 0; i < tamañoMatriz; i++)
             {
                 listaAux = obtenerVectorDeInputs("coeficiente", i);
@@ -178,7 +180,7 @@ namespace TPMatematicaSuperiorSIEL
 
         private List<double> obtenerVectorDeInputs(String nombreInput, int fila)
         {
-            List<double> listaAux = new List<double>(); 
+            List<double> listaAux = new List<double>();
 
             for (int i = 0; i < tamañoMatriz; i++)
             {
@@ -206,17 +208,42 @@ namespace TPMatematicaSuperiorSIEL
             {
                 respuesta = Convert.ToDouble(valorInput);
             }
-            catch(Exception e)
+            catch (Exception e)
             {
                 return double.NaN;
             }
             return respuesta;
-        }  
+        }
 
         private void radioButton1_CheckedChanged(object sender, EventArgs e)
         {
 
-        }    
+        }
+
+        private void button1_Click_1(object sender, EventArgs e)
+        {
+            List<List<double>> matrizCoeficientes = cargarMatrizCoeficientes();
+            //List<List<double>> unaMatrizTranspuesta = AnalizadorMatriz.matrizTranspuesta(matrizCoeficientes, tamañoMatriz);
+
+            //int columna=0;
+
+            double[,] matrix = AnalizadorMatriz.paseDeListAMatriz(matrizCoeficientes, tamañoMatriz);
+
+
+            for (int fila = 0; fila < tamañoMatriz; fila++)
+            {
+                for (int col = 0; col < tamañoMatriz; col++)
+                {
+                    Console.Write(matrix[fila,col] + "\t");
+                }
+                Console.WriteLine();
+            } 
+
+
+
+
+
+        }
 
     }
 }
