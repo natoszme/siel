@@ -116,10 +116,12 @@ namespace TPMatematicaSuperiorSIEL
             }
 
             //TODO limpiar la tabla
+            
             if (rdbJacobi.Checked == true)
             {
-                //new SielSolver.JacobiSielSolver().resolver();
-
+                SielSolver.JacobiSielSolver solver = new SielSolver.JacobiSielSolver();
+                solver.resolver(valoresIniciales, matrizCoeficientes, tamañoMatriz, terminosIndependientes);
+                
             }
             else
             {
