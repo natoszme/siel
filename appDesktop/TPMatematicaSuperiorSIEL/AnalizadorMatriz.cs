@@ -101,14 +101,14 @@ namespace TPMatematicaSuperiorSIEL
             List<List<double>> mTranspuesta = matrizTranspuesta(matrizCoeficientes, tamañoMatriz);
             double[,] matrixTranspuesta = paseDeListAMatriz(mTranspuesta, tamañoMatriz);
             double[,] matrixCoeficientes = paseDeListAMatriz(matrizCoeficientes, tamañoMatriz);
-            double[] autovalores = calculoAutoValores(matrizCoeficientes, tamañoMatriz);
 
-           // COMO HACER NORMA2 : RAIZ CUADRADA( MAYORAUTOVALOR(MATRIZCOEFICIENTES x transp matrizCoeficientes))
-
+            // COMO HACER NORMA2 : RAIZ CUADRADA( MAYORAUTOVALOR(transp MATRIZCOEFICIENTES x matrizCoeficientes))
+            double[,] matrizProducto = multiplicarMatrices(matrixCoeficientes, matrixTranspuesta, tamañoMatriz);
+            double[] autovalores = calculoAutoValores(matrizProducto, tamañoMatriz);
             double mayorAutovalor = autovalores.Max();
-
-        
+            return Math.Sqrt(mayorAutovalor);
         }
+
         public static List<List<double>> matrizTranspuesta(List<List<double>> matriz, int tamañoMatriz)
         {
             List<List<double>> matrizTranspuesta = new List<List<double>>();
@@ -144,21 +144,38 @@ namespace TPMatematicaSuperiorSIEL
 
             return matriz;
         }
-        public static double[] calculoAutoValores(List<List<double>> matrizCoeficientes, int tamañoMatriz)
+
+        public static double[] calculoAutoValores(double[,] matrizCoeficientes, int tamañoMatriz)
         { 
-            double[,] matriz= paseDeListAMatriz(matrizCoeficientes,tamañoMatriz);
             double[] autoValores;
             double[] parteImAutoValores;
             double[,] autoVectores;
             double[,] parteImAutoVectores;
 
-            bool autovaloresCreados = alglib.rmatrixevd(matriz,tamañoMatriz,0,out autoValores,out parteImAutoValores, out autoVectores, out parteImAutoVectores);
+            bool autovaloresCreados = alglib.rmatrixevd(matrizCoeficientes,tamañoMatriz,0,out autoValores,out parteImAutoValores, out autoVectores, out parteImAutoVectores);
 
             if (!autovaloresCreados) {
                 MessageBox.Show("No se pudieron calcular los autovalores", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return null;
             }
             return autoValores;
+        }
+
+        public static double[,] multiplicarMatrices(double[,] matriz1, double[,] matriz2,int tamañoMatriz)
+        {
+            int fila1, columna2, fila2columna1;
+            double[,] resultado = new double[tamañoMatriz, tamañoMatriz];
+            for (fila1 = 0; fila1 < tamañoMatriz; fila1++)
+            {
+                for (columna2 = 0; columna2 < tamañoMatriz; columna2++)
+                {
+                    for (fila2columna1 = 0; fila2columna1 < tamañoMatriz; fila2columna1++)
+                    {
+                        resultado[fila1,columna2] += matriz1[fila1,fila2columna1] * matriz2[fila2columna1,columna2];
+                    }
+                }
+            }
+            return resultado;
         }
     }
 }

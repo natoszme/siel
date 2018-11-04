@@ -224,25 +224,21 @@ namespace TPMatematicaSuperiorSIEL
         {
             List<List<double>> matrizCoeficientes = cargarMatrizCoeficientes();
             //List<List<double>> unaMatrizTranspuesta = AnalizadorMatriz.matrizTranspuesta(matrizCoeficientes, tamañoMatriz);
-
+            double resultado = AnalizadorMatriz.norma2(matrizCoeficientes, tamañoMatriz);
+            Console.Write(resultado);
             //int columna=0;
 
-            double[,] matrix = AnalizadorMatriz.paseDeListAMatriz(matrizCoeficientes, tamañoMatriz);
-
+            /*double[,] matrix = AnalizadorMatriz.paseDeListAMatriz(matrizCoeficientes, tamañoMatriz);
+            double[,] resultado = AnalizadorMatriz.multiplicarMatrices(matrix, matrix, tamañoMatriz);
 
             for (int fila = 0; fila < tamañoMatriz; fila++)
             {
                 for (int col = 0; col < tamañoMatriz; col++)
                 {
-                    Console.Write(matrix[fila,col] + "\t");
+                    Console.Write(resultado[fila,col] + "\t");
                 }
                 Console.WriteLine();
-            } 
-
-
-
-
-
+            } */
         }
 
     }
