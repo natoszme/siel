@@ -110,13 +110,10 @@
     <EmbeddedResource Include="PuntoDeEntrada.resx">
       <DependentUpon>PuntoDeEntrada.cs</DependentUpon>
     </EmbeddedResource>
-<<<<<<< HEAD
     <EmbeddedResource Include="Resultados.resx">
       <DependentUpon>Resultados.cs</DependentUpon>
     </EmbeddedResource>
-=======
     <None Include="packages.config" />
->>>>>>> edef4c28ccf6515958c0d655030da5439807b1dc
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
