@@ -26,11 +26,14 @@ namespace TPMatematicaSuperiorSIEL.SielSolver
                 proximoValor = proximoValor / matrizCoeficientes[i][i];
                 proximasIncognitas.Insert(i, proximoValor);
             }
+            
+           // this.Hide();
             System.Threading.Thread.Sleep(3);
+           
             //resolverSegunEstrategia(matrizCoeficientes, tamañoMatrizCoeficientes, terminosIndependientes, proximasIncognitas);
 
             //TODO
-            return null;
+            return proximasIncognitas ;
         }
     }
 }
