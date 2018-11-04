@@ -243,5 +243,30 @@ namespace TPMatematicaSuperiorSIEL
             } */
         }
 
-    }
+        private void btnNorma1_Click(object sender, EventArgs e)
+        {
+            List<List<double>> matrizCoeficientes = cargarMatrizCoeficientes();
+            double resultado = AnalizadorMatriz.norma1(matrizCoeficientes, tamañoMatriz);
+            MessageBox.Show("La norma 1 es: "+ resultado.ToString(), "Norma 1", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                
+        }
+
+        private void btnNorma2_Click(object sender, EventArgs e)
+        {
+            List<List<double>> matrizCoeficientes = cargarMatrizCoeficientes();
+            double resultado = AnalizadorMatriz.norma2(matrizCoeficientes, tamañoMatriz);
+            MessageBox.Show("La norma 2 es: " + resultado.ToString(), "Norma 2", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            
+        }
+
+        private void btnNormaInfinito_Click(object sender, EventArgs e)
+        {
+            List<List<double>> matrizCoeficientes = cargarMatrizCoeficientes();
+            double resultado = AnalizadorMatriz.normaInfinita(matrizCoeficientes);
+            MessageBox.Show("La norma infinita es: " + resultado.ToString(), "Norma Infinita", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            
+        }
+
+        }
+
 }
