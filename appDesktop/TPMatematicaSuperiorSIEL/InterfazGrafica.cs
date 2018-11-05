@@ -224,49 +224,43 @@ namespace TPMatematicaSuperiorSIEL
 
         private void button1_Click_1(object sender, EventArgs e)
         {
+            PuntoDeEntrada volverComienzo = new PuntoDeEntrada();
+            this.Close();
+            volverComienzo.ShowDialog();
+            
+        }
+
+        private void btnCalcular_Click(object sender, EventArgs e)
+        {
             List<List<double>> matrizCoeficientes = cargarMatrizCoeficientes();
-            //List<List<double>> unaMatrizTranspuesta = AnalizadorMatriz.matrizTranspuesta(matrizCoeficientes, tamañoMatriz);
-            double resultado = AnalizadorMatriz.norma2(matrizCoeficientes, tamañoMatriz);
-            Console.Write(resultado);
-            //int columna=0;
 
-            /*double[,] matrix = AnalizadorMatriz.paseDeListAMatriz(matrizCoeficientes, tamañoMatriz);
-            double[,] resultado = AnalizadorMatriz.multiplicarMatrices(matrix, matrix, tamañoMatriz);
-
-            for (int fila = 0; fila < tamañoMatriz; fila++)
+            if (matrizCoeficientes == null)
             {
-                for (int col = 0; col < tamañoMatriz; col++)
-                {
-                    Console.Write(resultado[fila,col] + "\t");
-                }
-                Console.WriteLine();
-            } */
+                MessageBox.Show("La matriz de coeficientes debe contener números", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            if (normas.Text == "1")
+            {
+                List<List<double>> matrizDeCoeficientes = cargarMatrizCoeficientes();
+                double resultado = AnalizadorMatriz.norma1(matrizDeCoeficientes, tamañoMatriz);
+                MessageBox.Show("La norma 1 es: " + resultado.ToString(), "Norma 1", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            if (normas.Text == "2") 
+            {
+                List<List<double>> matrizDeCoeficientes = cargarMatrizCoeficientes();
+                double resultado = AnalizadorMatriz.norma2(matrizDeCoeficientes, tamañoMatriz);
+                MessageBox.Show("La norma 2 es: " + resultado.ToString(), "Norma 2", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            if (normas.Text == "Infinita") 
+            {
+                List<List<double>> matrizDeCoeficientes = cargarMatrizCoeficientes();
+                double resultado = AnalizadorMatriz.normaInfinita(matrizDeCoeficientes);
+                MessageBox.Show("La norma infinita es: " + resultado.ToString(), "Norma Infinita", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
         }
 
-        private void btnNorma1_Click(object sender, EventArgs e)
-        {
-            List<List<double>> matrizCoeficientes = cargarMatrizCoeficientes();
-            double resultado = AnalizadorMatriz.norma1(matrizCoeficientes, tamañoMatriz);
-            MessageBox.Show("La norma 1 es: "+ resultado.ToString(), "Norma 1", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                
-        }
 
-        private void btnNorma2_Click(object sender, EventArgs e)
-        {
-            List<List<double>> matrizCoeficientes = cargarMatrizCoeficientes();
-            double resultado = AnalizadorMatriz.norma2(matrizCoeficientes, tamañoMatriz);
-            MessageBox.Show("La norma 2 es: " + resultado.ToString(), "Norma 2", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            
-        }
-
-        private void btnNormaInfinito_Click(object sender, EventArgs e)
-        {
-            List<List<double>> matrizCoeficientes = cargarMatrizCoeficientes();
-            double resultado = AnalizadorMatriz.normaInfinita(matrizCoeficientes);
-            MessageBox.Show("La norma infinita es: " + resultado.ToString(), "Norma Infinita", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            
-        }
-
-        }
+    }
 
 }

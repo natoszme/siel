@@ -38,14 +38,14 @@ namespace TPMatematicaSuperiorSIEL
             this.rdbJacobi = new System.Windows.Forms.RadioButton();
             this.lblTipoMatriz = new System.Windows.Forms.Label();
             this.volver = new System.Windows.Forms.Button();
-            this.btnNorma1 = new System.Windows.Forms.Button();
-            this.btnNorma2 = new System.Windows.Forms.Button();
-            this.btnNormaInfinito = new System.Windows.Forms.Button();
+            this.normas = new System.Windows.Forms.ComboBox();
+            this.btnCalcular = new System.Windows.Forms.Button();
+            this.label1 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // btnResolver
             // 
-            this.btnResolver.Location = new System.Drawing.Point(360, 429);
+            this.btnResolver.Location = new System.Drawing.Point(376, 437);
             this.btnResolver.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.btnResolver.Name = "btnResolver";
             this.btnResolver.Size = new System.Drawing.Size(112, 35);
@@ -57,7 +57,7 @@ namespace TPMatematicaSuperiorSIEL
             // rdbGaussSeidel
             // 
             this.rdbGaussSeidel.AutoSize = true;
-            this.rdbGaussSeidel.Location = new System.Drawing.Point(84, 465);
+            this.rdbGaussSeidel.Location = new System.Drawing.Point(26, 465);
             this.rdbGaussSeidel.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.rdbGaussSeidel.Name = "rdbGaussSeidel";
             this.rdbGaussSeidel.Size = new System.Drawing.Size(130, 24);
@@ -71,7 +71,7 @@ namespace TPMatematicaSuperiorSIEL
             this.rdbJacobi.AutoSize = true;
             this.rdbJacobi.Checked = true;
             this.rdbJacobi.DataBindings.Add(new System.Windows.Forms.Binding("Text", global::TPMatematicaSuperiorSIEL.Properties.Settings.Default, "Jacobi", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
-            this.rdbJacobi.Location = new System.Drawing.Point(84, 429);
+            this.rdbJacobi.Location = new System.Drawing.Point(26, 431);
             this.rdbJacobi.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.rdbJacobi.Name = "rdbJacobi";
             this.rdbJacobi.Size = new System.Drawing.Size(80, 24);
@@ -93,56 +93,57 @@ namespace TPMatematicaSuperiorSIEL
             // 
             // volver
             // 
-            this.volver.Location = new System.Drawing.Point(528, 429);
+            this.volver.Location = new System.Drawing.Point(528, 424);
             this.volver.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.volver.Name = "volver";
-            this.volver.Size = new System.Drawing.Size(112, 35);
+            this.volver.Size = new System.Drawing.Size(112, 60);
             this.volver.TabIndex = 4;
-            this.volver.Text = "Volver";
+            this.volver.Text = "Volver al comienzo";
             this.volver.UseVisualStyleBackColor = true;
             this.volver.Click += new System.EventHandler(this.button1_Click_1);
             // 
-            // btnNorma1
+            // normas
             // 
-            this.btnNorma1.Location = new System.Drawing.Point(528, 228);
-            this.btnNorma1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.btnNorma1.Name = "btnNorma1";
-            this.btnNorma1.Size = new System.Drawing.Size(112, 35);
-            this.btnNorma1.TabIndex = 5;
-            this.btnNorma1.Text = "Norma 1";
-            this.btnNorma1.UseVisualStyleBackColor = true;
-            this.btnNorma1.Click += new System.EventHandler(this.btnNorma1_Click);
+            this.normas.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.normas.FormattingEnabled = true;
+            this.normas.Items.AddRange(new object[] {
+            "1",
+            "2",
+            "Infinita"});
+            this.normas.Location = new System.Drawing.Point(101, 384);
+            this.normas.Name = "normas";
+            this.normas.Size = new System.Drawing.Size(121, 28);
+            this.normas.TabIndex = 8;
             // 
-            // btnNorma2
+            // btnCalcular
             // 
-            this.btnNorma2.Location = new System.Drawing.Point(528, 289);
-            this.btnNorma2.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.btnNorma2.Name = "btnNorma2";
-            this.btnNorma2.Size = new System.Drawing.Size(112, 35);
-            this.btnNorma2.TabIndex = 6;
-            this.btnNorma2.Text = "Norma 2";
-            this.btnNorma2.UseVisualStyleBackColor = true;
-            this.btnNorma2.Click += new System.EventHandler(this.btnNorma2_Click);
+            this.btnCalcular.Location = new System.Drawing.Point(250, 380);
+            this.btnCalcular.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.btnCalcular.Name = "btnCalcular";
+            this.btnCalcular.Size = new System.Drawing.Size(112, 35);
+            this.btnCalcular.TabIndex = 9;
+            this.btnCalcular.Text = "Calcular";
+            this.btnCalcular.UseVisualStyleBackColor = true;
+            this.btnCalcular.Click += new System.EventHandler(this.btnCalcular_Click);
             // 
-            // btnNormaInfinito
+            // label1
             // 
-            this.btnNormaInfinito.Location = new System.Drawing.Point(528, 352);
-            this.btnNormaInfinito.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.btnNormaInfinito.Name = "btnNormaInfinito";
-            this.btnNormaInfinito.Size = new System.Drawing.Size(112, 35);
-            this.btnNormaInfinito.TabIndex = 7;
-            this.btnNormaInfinito.Text = "Norma ∞";
-            this.btnNormaInfinito.UseVisualStyleBackColor = true;
-            this.btnNormaInfinito.Click += new System.EventHandler(this.btnNormaInfinito_Click);
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(22, 387);
+            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(56, 20);
+            this.label1.TabIndex = 10;
+            this.label1.Text = "Norma";
             // 
             // InterfazGrafica
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(678, 520);
-            this.Controls.Add(this.btnNormaInfinito);
-            this.Controls.Add(this.btnNorma2);
-            this.Controls.Add(this.btnNorma1);
+            this.Controls.Add(this.label1);
+            this.Controls.Add(this.btnCalcular);
+            this.Controls.Add(this.normas);
             this.Controls.Add(this.volver);
             this.Controls.Add(this.lblTipoMatriz);
             this.Controls.Add(this.rdbGaussSeidel);
@@ -164,9 +165,9 @@ namespace TPMatematicaSuperiorSIEL
         private System.Windows.Forms.RadioButton rdbGaussSeidel;
         private System.Windows.Forms.Label lblTipoMatriz;
         private System.Windows.Forms.Button volver;
-        private System.Windows.Forms.Button btnNorma1;
-        private System.Windows.Forms.Button btnNorma2;
-        private System.Windows.Forms.Button btnNormaInfinito;
+        private System.Windows.Forms.ComboBox normas;
+        private System.Windows.Forms.Button btnCalcular;
+        private System.Windows.Forms.Label label1;
     }
 }
 
