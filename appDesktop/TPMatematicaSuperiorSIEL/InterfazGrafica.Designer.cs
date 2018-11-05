@@ -42,16 +42,17 @@ namespace TPMatematicaSuperiorSIEL
             this.normas = new System.Windows.Forms.ComboBox();
             this.btnCalcular = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
+            this.btnLimpiar = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // btnResolver
             // 
             this.btnResolver.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
             this.btnResolver.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnResolver.Location = new System.Drawing.Point(403, 432);
+            this.btnResolver.Location = new System.Drawing.Point(489, 414);
             this.btnResolver.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.btnResolver.Name = "btnResolver";
-            this.btnResolver.Size = new System.Drawing.Size(126, 47);
+            this.btnResolver.Size = new System.Drawing.Size(126, 82);
             this.btnResolver.TabIndex = 0;
             this.btnResolver.Text = "Resolver";
             this.btnResolver.UseVisualStyleBackColor = false;
@@ -104,7 +105,7 @@ namespace TPMatematicaSuperiorSIEL
             // 
             this.volver.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
             this.volver.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.volver.Location = new System.Drawing.Point(555, 419);
+            this.volver.Location = new System.Drawing.Point(642, 414);
             this.volver.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.volver.Name = "volver";
             this.volver.Size = new System.Drawing.Size(137, 82);
@@ -151,12 +152,26 @@ namespace TPMatematicaSuperiorSIEL
             this.label1.TabIndex = 10;
             this.label1.Text = "Norma";
             // 
+            // btnLimpiar
+            // 
+            this.btnLimpiar.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
+            this.btnLimpiar.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnLimpiar.Location = new System.Drawing.Point(277, 443);
+            this.btnLimpiar.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.btnLimpiar.Name = "btnLimpiar";
+            this.btnLimpiar.Size = new System.Drawing.Size(112, 46);
+            this.btnLimpiar.TabIndex = 11;
+            this.btnLimpiar.Text = "Limpiar";
+            this.btnLimpiar.UseVisualStyleBackColor = false;
+            this.btnLimpiar.Click += new System.EventHandler(this.btnLimpiar_Click);
+            // 
             // InterfazGrafica
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.ClientSize = new System.Drawing.Size(821, 529);
+            this.Controls.Add(this.btnLimpiar);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.btnCalcular);
             this.Controls.Add(this.normas);
@@ -185,6 +200,7 @@ namespace TPMatematicaSuperiorSIEL
         private System.Windows.Forms.ComboBox normas;
         private System.Windows.Forms.Button btnCalcular;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Button btnLimpiar;
     }
 }
 

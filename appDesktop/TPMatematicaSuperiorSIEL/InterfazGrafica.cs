@@ -287,6 +287,26 @@ namespace TPMatematicaSuperiorSIEL
             }
         }
 
+        private void btnLimpiar_Click(object sender, EventArgs e)
+        {
+            Action<Control.ControlCollection> funcionBorrado = null;
+
+            funcionBorrado = (controles) =>
+            {
+                foreach (Control txt in controles)
+                    if (txt is TextBox)
+                    {
+                        (txt as TextBox).Clear();
+                    }
+                    else {
+                        funcionBorrado(txt.Controls);
+                    }
+                        
+            };
+
+            funcionBorrado(Controls);
+        }
+
 
     }
 
