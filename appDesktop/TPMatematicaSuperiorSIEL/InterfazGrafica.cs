@@ -27,7 +27,7 @@ namespace TPMatematicaSuperiorSIEL
 
         void generarInputs()
         {
-            int posicionBaseX = 30;
+            int posicionBaseX = 70;
             int posicionBaseY = 30;
             int distanciaEntreTextBoxX = 20;
             int distanciaEntreTextBoxY = 20;
@@ -75,7 +75,6 @@ namespace TPMatematicaSuperiorSIEL
 
             }
 
-            //TODO agregar label para "Valores iniciales"
             for (int i = 0; i < tamañoMatriz; i++)
             {
                 TextBox txt = new TextBox();
@@ -85,7 +84,27 @@ namespace TPMatematicaSuperiorSIEL
                 int posY = posYlblIndependientes + 50;
                 txt.SetBounds(posX, posY, tamanioTxtX, tamanioTxtY);
                 this.Controls.Add(txt);
+
+                if (i == 0) {
+                    Label lblValoresIniciales = new Label();
+                    lblValoresIniciales.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+                    lblValoresIniciales.ForeColor = System.Drawing.SystemColors.Control;
+                    lblValoresIniciales.Text = "Valores";
+                    lblValoresIniciales.SetBounds(posX - 50, posY-5, 60, tamanioTxtY);
+                    this.Controls.Add(lblValoresIniciales);
+                }
+                if (i == 0)
+                {
+                    Label lblValoresIniciales = new Label();
+                    lblValoresIniciales.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+                    lblValoresIniciales.ForeColor = System.Drawing.SystemColors.Control;
+                    lblValoresIniciales.Text = "Iniciales";
+                    lblValoresIniciales.SetBounds(posX - 50, posY+13, 60, tamanioTxtY);
+                    this.Controls.Add(lblValoresIniciales);
+                }
             }
+            
+
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -244,7 +263,10 @@ namespace TPMatematicaSuperiorSIEL
                 MessageBox.Show("La matriz de coeficientes debe contener números", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
-
+            if (normas.Text == "") {
+                MessageBox.Show("No eligió ninguna norma", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
             if (normas.Text == "1")
             {
                 List<List<double>> matrizDeCoeficientes = cargarMatrizCoeficientes();

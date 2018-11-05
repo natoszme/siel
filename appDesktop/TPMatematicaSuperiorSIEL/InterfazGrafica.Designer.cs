@@ -48,7 +48,7 @@ namespace TPMatematicaSuperiorSIEL
             // 
             this.btnResolver.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
             this.btnResolver.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnResolver.Location = new System.Drawing.Point(376, 437);
+            this.btnResolver.Location = new System.Drawing.Point(403, 432);
             this.btnResolver.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.btnResolver.Name = "btnResolver";
             this.btnResolver.Size = new System.Drawing.Size(126, 47);
@@ -62,7 +62,7 @@ namespace TPMatematicaSuperiorSIEL
             this.rdbGaussSeidel.AutoSize = true;
             this.rdbGaussSeidel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.rdbGaussSeidel.ForeColor = System.Drawing.SystemColors.Control;
-            this.rdbGaussSeidel.Location = new System.Drawing.Point(26, 465);
+            this.rdbGaussSeidel.Location = new System.Drawing.Point(53, 460);
             this.rdbGaussSeidel.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.rdbGaussSeidel.Name = "rdbGaussSeidel";
             this.rdbGaussSeidel.Size = new System.Drawing.Size(156, 29);
@@ -78,7 +78,7 @@ namespace TPMatematicaSuperiorSIEL
             this.rdbJacobi.DataBindings.Add(new System.Windows.Forms.Binding("Text", global::TPMatematicaSuperiorSIEL.Properties.Settings.Default, "Jacobi", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
             this.rdbJacobi.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.rdbJacobi.ForeColor = System.Drawing.SystemColors.Control;
-            this.rdbJacobi.Location = new System.Drawing.Point(26, 431);
+            this.rdbJacobi.Location = new System.Drawing.Point(53, 426);
             this.rdbJacobi.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.rdbJacobi.Name = "rdbJacobi";
             this.rdbJacobi.Size = new System.Drawing.Size(95, 29);
@@ -93,7 +93,7 @@ namespace TPMatematicaSuperiorSIEL
             this.lblTipoMatriz.AutoSize = true;
             this.lblTipoMatriz.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblTipoMatriz.ForeColor = System.Drawing.SystemColors.Control;
-            this.lblTipoMatriz.Location = new System.Drawing.Point(388, 37);
+            this.lblTipoMatriz.Location = new System.Drawing.Point(519, 31);
             this.lblTipoMatriz.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblTipoMatriz.Name = "lblTipoMatriz";
             this.lblTipoMatriz.Size = new System.Drawing.Size(146, 25);
@@ -104,7 +104,7 @@ namespace TPMatematicaSuperiorSIEL
             // 
             this.volver.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
             this.volver.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.volver.Location = new System.Drawing.Point(528, 424);
+            this.volver.Location = new System.Drawing.Point(555, 419);
             this.volver.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.volver.Name = "volver";
             this.volver.Size = new System.Drawing.Size(137, 82);
@@ -121,7 +121,7 @@ namespace TPMatematicaSuperiorSIEL
             "1",
             "2",
             "Infinita"});
-            this.normas.Location = new System.Drawing.Point(101, 384);
+            this.normas.Location = new System.Drawing.Point(128, 379);
             this.normas.Name = "normas";
             this.normas.Size = new System.Drawing.Size(121, 28);
             this.normas.TabIndex = 8;
@@ -130,7 +130,7 @@ namespace TPMatematicaSuperiorSIEL
             // 
             this.btnCalcular.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
             this.btnCalcular.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnCalcular.Location = new System.Drawing.Point(250, 380);
+            this.btnCalcular.Location = new System.Drawing.Point(277, 375);
             this.btnCalcular.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.btnCalcular.Name = "btnCalcular";
             this.btnCalcular.Size = new System.Drawing.Size(112, 46);
@@ -144,7 +144,7 @@ namespace TPMatematicaSuperiorSIEL
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.SystemColors.Control;
-            this.label1.Location = new System.Drawing.Point(22, 387);
+            this.label1.Location = new System.Drawing.Point(49, 382);
             this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(70, 25);
@@ -156,7 +156,7 @@ namespace TPMatematicaSuperiorSIEL
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.ClientSize = new System.Drawing.Size(685, 529);
+            this.ClientSize = new System.Drawing.Size(821, 529);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.btnCalcular);
             this.Controls.Add(this.normas);
