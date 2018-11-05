@@ -139,8 +139,6 @@ namespace TPMatematicaSuperiorSIEL
                 return;
             }
 
-            //TODO limpiar la tabla
-            
             if (rdbJacobi.Checked == true)
             {
                 SielSolver.JacobiSielSolver solver = new SielSolver.JacobiSielSolver();
@@ -160,6 +158,7 @@ namespace TPMatematicaSuperiorSIEL
             AnalizadorMatriz.DiagonalidadMatriz tipoDiagonalidad = AnalizadorMatriz.obtenerDiagonalidad(coeficientes, tamañoMatriz);
             lblTipoMatriz.Text = "Tipo de matriz: ";
             lblTipoMatriz.Text += AnalizadorMatriz.aString(tipoDiagonalidad);
+            
 
             if (tipoDiagonalidad == AnalizadorMatriz.DiagonalidadMatriz.NoDominante)
             {
@@ -290,7 +289,7 @@ namespace TPMatematicaSuperiorSIEL
         private void btnLimpiar_Click(object sender, EventArgs e)
         {
             Action<Control.ControlCollection> funcionBorrado = null;
-
+            lblTipoMatriz.Text = "Tipo de matriz: ";
             funcionBorrado = (controles) =>
             {
                 foreach (Control txt in controles)
