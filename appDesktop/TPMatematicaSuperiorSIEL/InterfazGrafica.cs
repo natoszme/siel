@@ -51,7 +51,6 @@ namespace TPMatematicaSuperiorSIEL
                 int posY = posicionBaseY + (i / tamañoMatriz) * (distanciaEntreTextBoxY + tamanioTxtY);
                 txt.SetBounds(posX, posY, tamanioTxtX, tamanioTxtY);
                 this.Controls.Add(txt);
-                groupBox1.Controls.AddRange(new Control[] { lblX, txt});
             }
 
             int offsetTerminosIndependientes = 40;
@@ -74,7 +73,6 @@ namespace TPMatematicaSuperiorSIEL
                 txt.SetBounds(posX, posY, tamanioTxtX, tamanioTxtY);
                 this.Controls.Add(txt);
 
-                groupBox1.Controls.AddRange(new Control[] { lblX, txt });
             }
 
             //TODO agregar label para "Valores iniciales"
@@ -87,7 +85,6 @@ namespace TPMatematicaSuperiorSIEL
                 int posY = posYlblIndependientes + 50;
                 txt.SetBounds(posX, posY, tamanioTxtX, tamanioTxtY);
                 this.Controls.Add(txt);
-                groupBox1.Controls.AddRange(new Control[] {txt });
             }
         }
 
