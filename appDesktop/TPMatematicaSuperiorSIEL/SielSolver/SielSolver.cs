@@ -9,7 +9,7 @@ namespace TPMatematicaSuperiorSIEL.SielSolver
     public abstract class SielSolver
     {
         public List<CriterioDeParo.CriterioDeParo> criteriosDeParo = new List<CriterioDeParo.CriterioDeParo>();
-        public List<List<double>> pasos = new List<List<double>>();
+        public List<PasoDeResolucion> pasos = new List<PasoDeResolucion>();
 
         public SielSolver()
         {
@@ -21,25 +21,29 @@ namespace TPMatematicaSuperiorSIEL.SielSolver
 
         public void resolver(List<double> vectorInicial,List<List<double>> matrizCoeficientes, int cantidadEcuaciones, List<double> terminosIndependientes)
         {
-            pasos.Add(vectorInicial);
-            //TODO llamar a resolverSegunEstrategia con el vector inicial
-            //ese metodo tiene que devolver una lista de valores, para aplicarla aca:
+            
+            PasoDeResolucion paso = new PasoDeResolucion();
+            paso.setearValoresDeIncognitas(vectorInicial);
+           
              List<double> vectorCalculado = resolverSegunEstrategia(matrizCoeficientes,cantidadEcuaciones,terminosIndependientes,vectorInicial);
              
-            //vectorCalculado = resolverSegunEstrategia(//completar con los parametros);
+            //Cargo al paso de resolucion el resultado del criterio de paro para esa iteracion
+            criteriosDeParo.ForEach(criterio=> paso.cargarCriterio(criterio.hayQueSeguir(vectorInicial,vectorCalculado)));
+            pasos.Add(paso); 
+            if (criteriosDeParo.Any(criterio => criterio.hayQueSeguir(vectorInicial, vectorCalculado)))
+            {
+                resolver(vectorCalculado, matrizCoeficientes, cantidadEcuaciones, terminosIndependientes);
+            }
+            else
+            {
+                PasoDeResolucion pasoFinal = new PasoDeResolucion();
+                pasoFinal.setearValoresDeIncognitas(vectorCalculado);
+                criteriosDeParo.ForEach(criterio => pasoFinal.cargarCriterio(criterio.hayQueSeguir(vectorInicial, vectorCalculado)));
 
-            // TODO: habria que mostrar en la UI si se puede o no seguir (con c/criterio)
-            // Tambien mostrar los pasos que se siguieron
-             if (criteriosDeParo.Any(criterio => criterio.hayQueSeguir(vectorInicial, vectorCalculado)))
-             {
-                 resolver(vectorCalculado, matrizCoeficientes, cantidadEcuaciones, terminosIndependientes);
-             }
-             else
-             {
-                 pasos.Add(vectorCalculado); 
-                 Resultados formResultados = new Resultados(pasos);
-                 formResultados.Show();
-             }
+                pasos.Add(pasoFinal); 
+                Resultados formResultados = new Resultados(pasos);
+                formResultados.Show();
+            }
         }
 
         protected abstract List<double> resolverSegunEstrategia(List<List<double>> matrizCoeficientes, int tamanioMatrizCoeficientes, List<double> terminosIndependientes, List<double> incognitas);
