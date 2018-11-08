@@ -73,12 +73,12 @@ namespace TPMatematicaSuperiorSIEL
 
         public static double normaInfinita(List<List<double>> coeficientes)
         {
-            return coeficientes.Select(fila => fila.Sum()).Max();
+            return coeficientes.Select(fila => normaInfinita(fila)).Max();
         }
 
         public static double normaInfinita(List<double> coeficientes)
         {
-            return coeficientes.Sum();
+            return coeficientes.Select(coeficiente => Math.Abs(coeficiente)).Sum();
         }
 
         public static double norma1(List<List<double>> matriz, int tamañoMatriz)
