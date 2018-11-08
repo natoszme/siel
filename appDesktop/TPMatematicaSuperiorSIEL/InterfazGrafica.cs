@@ -141,9 +141,8 @@ namespace TPMatematicaSuperiorSIEL
 
             if (rdbJacobi.Checked == true)
             {
-                SielSolver.JacobiSielSolver solver = new SielSolver.JacobiSielSolver();
-                solver.resolver(valoresIniciales, matrizCoeficientes, tamañoMatriz, terminosIndependientes);
-                
+                SielSolver.JacobiSielSolver solver = new SielSolver.JacobiSielSolver(double.Parse(numUDEpsilon.Value.ToString()));
+                solver.resolver(valoresIniciales, matrizCoeficientes, tamañoMatriz, terminosIndependientes);                
             }
             else
             {
