@@ -11,10 +11,8 @@ namespace TPMatematicaSuperiorSIEL.SielSolver
         public List<CriterioDeParo.CriterioDeParo> criteriosDeParo = new List<CriterioDeParo.CriterioDeParo>();
         public List<PasoDeResolucion> pasos = new List<PasoDeResolucion>();
 
-        public SielSolver()
+        public SielSolver(double epsilon)
         {
-            const double epsilon = 0.001;
-            // TODO: obtener epsilon desde la UI
             criteriosDeParo.Add(new CriterioDeParo.CriterioAbsoluto(epsilon));
             criteriosDeParo.Add(new CriterioDeParo.CriterioRelativo(epsilon));
         }

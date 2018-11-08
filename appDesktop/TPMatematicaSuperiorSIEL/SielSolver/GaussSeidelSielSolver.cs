@@ -8,7 +8,7 @@ namespace TPMatematicaSuperiorSIEL.SielSolver
 {
     public class GaussSeidelSielSolver : SielSolver
     {
-        public GaussSeidelSielSolver() : base() { }
+        public GaussSeidelSielSolver(double epsilon) : base(epsilon) { }
 
         protected override List<double> resolverSegunEstrategia(List<List<double>> matrizCoeficientes, int tamanioMatrizCoeficientes, List<double> terminosIndependientes, List<double> incognitas)
         {

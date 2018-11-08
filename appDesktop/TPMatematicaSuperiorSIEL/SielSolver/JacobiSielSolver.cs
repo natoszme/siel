@@ -8,7 +8,7 @@ namespace TPMatematicaSuperiorSIEL.SielSolver
 {
     public class JacobiSielSolver : SielSolver
     {
-        public JacobiSielSolver() : base() {}
+        public JacobiSielSolver(double epsilon) : base(epsilon) { }
 
         protected override List<double> resolverSegunEstrategia(List<List<double>> matrizCoeficientes, int tamañoMatrizCoeficientes, List<double> terminosIndependientes, List<double> incognitas)
         {
