@@ -20,10 +20,12 @@ namespace TPMatematicaSuperiorSIEL.CriterioDeParo
             return normaInfinita >= epsilon;
         }
 
-        protected double valorDeReferencia(List<double> vectorAnterior, List<double> vectorActual)
+        private double valorDeReferencia(List<double> vectorAnterior, List<double> vectorActual)
         {
-            List<Double> vectorResultado = vectorActual.Zip(vectorAnterior, (actual, anterior) => actual - anterior).ToList();
-            return AnalizadorMatriz.normaInfinita(vectorResultado);
+            List<Double> vectorResultado = vectorActual.Zip(vectorAnterior, (actual, anterior) => Math.Abs(actual - anterior)).ToList();
+            return AnalizadorMatriz.normaInfinita(vectorResultado) / this.factorDeDivision(vectorActual);
         }
+
+        protected abstract double factorDeDivision(List<double> vectorActual);
     }
 }

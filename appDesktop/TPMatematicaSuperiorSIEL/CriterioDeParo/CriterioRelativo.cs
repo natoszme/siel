@@ -10,10 +10,9 @@ namespace TPMatematicaSuperiorSIEL.CriterioDeParo
     {
         public CriterioRelativo(double epsilon) : base(epsilon) { }
 
-        new protected double valorDeReferencia(List<double> vectorAnterior, List<double> vectorActual)
+        protected override double factorDeDivision(List<double> vectorActual)
         {
-            double normaInfinitaDeLaResta = base.valorDeReferencia(vectorAnterior, vectorActual);
-            return normaInfinitaDeLaResta / AnalizadorMatriz.normaInfinita(vectorActual);
+            return AnalizadorMatriz.normaInfinita(vectorActual);
         }
     }
 }

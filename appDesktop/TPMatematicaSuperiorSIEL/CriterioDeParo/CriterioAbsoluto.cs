@@ -9,5 +9,10 @@ namespace TPMatematicaSuperiorSIEL.CriterioDeParo
     public class CriterioAbsoluto : CriterioDeParo
     {
         public CriterioAbsoluto(double epsilon) : base(epsilon) { }
+
+        protected override double factorDeDivision(List<double> vectorActual)
+        {
+            return 1;
+        }
     }
 }
