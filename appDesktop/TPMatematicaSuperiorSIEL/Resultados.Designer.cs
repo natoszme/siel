@@ -37,21 +37,20 @@
             // 
             this.dgvResultados.BackgroundColor = System.Drawing.SystemColors.ButtonShadow;
             this.dgvResultados.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvResultados.Location = new System.Drawing.Point(33, 71);
-            this.dgvResultados.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.dgvResultados.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dgvResultados.Location = new System.Drawing.Point(0, 0);
             this.dgvResultados.Name = "dgvResultados";
-            this.dgvResultados.Size = new System.Drawing.Size(360, 231);
+            this.dgvResultados.Size = new System.Drawing.Size(704, 316);
             this.dgvResultados.TabIndex = 0;
             // 
             // Resultados
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.ClientSize = new System.Drawing.Size(426, 402);
+            this.ClientSize = new System.Drawing.Size(704, 316);
             this.Controls.Add(this.dgvResultados);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.Name = "Resultados";
             this.Text = "Resultados";
             this.Load += new System.EventHandler(this.Resultados_Load);
