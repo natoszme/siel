@@ -28,6 +28,12 @@ namespace TPMatematicaSuperiorSIEL
                 cumpleCriterioDeParo.Add("Paro");
             }
         }
+
+        public void cargarCriterioFinal()
+        {
+            cumpleCriterioDeParo.Add("-");
+        }
+
         public void setearValoresDeIncognitas(List<Double> valores)
         {
             valores.ForEach(agregarValor);

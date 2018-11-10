@@ -36,7 +36,7 @@ namespace TPMatematicaSuperiorSIEL.SielSolver
             {
                 PasoDeResolucion pasoFinal = new PasoDeResolucion();
                 pasoFinal.setearValoresDeIncognitas(vectorCalculado);
-                criteriosDeParo.ForEach(criterio => pasoFinal.cargarCriterio(criterio.hayQueSeguir(vectorInicial, vectorCalculado)));
+                criteriosDeParo.ForEach(criterio => pasoFinal.cargarCriterioFinal());
 
                 pasos.Add(pasoFinal); 
                 Resultados formResultados = new Resultados(pasos);
