@@ -40,7 +40,7 @@ namespace TPMatematicaSuperiorSIEL.SielSolver
 
                 pasos.Add(pasoFinal); 
                 Resultados formResultados = new Resultados(pasos);
-                formResultados.Show();
+                formResultados.ShowDialog();
             }
         }
 

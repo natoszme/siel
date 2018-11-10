@@ -139,15 +139,15 @@ namespace TPMatematicaSuperiorSIEL
                 return;
             }
 
+            double epsilon = double.Parse(numUDEpsilon.Value.ToString());
+
             if (rdbJacobi.Checked == true)
             {
-                SielSolver.JacobiSielSolver solver = new SielSolver.JacobiSielSolver(double.Parse(numUDEpsilon.Value.ToString()));
-                solver.resolver(valoresIniciales, matrizCoeficientes, tamañoMatriz, terminosIndependientes);                
+                new SielSolver.JacobiSielSolver(epsilon).resolver(valoresIniciales, matrizCoeficientes, tamañoMatriz, terminosIndependientes);                
             }
             else
             {
-                //new SielSolver.GaussSeidelSielSolver().resolver();
-
+                new SielSolver.GaussSeidelSielSolver(epsilon).resolver(valoresIniciales, matrizCoeficientes, tamañoMatriz, terminosIndependientes);
             }
 
         }
