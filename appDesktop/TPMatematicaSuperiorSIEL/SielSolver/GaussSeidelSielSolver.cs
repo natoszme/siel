@@ -8,7 +8,7 @@ namespace TPMatematicaSuperiorSIEL.SielSolver
 {
     public class GaussSeidelSielSolver : SielSolver
     {
-        public GaussSeidelSielSolver(double epsilon) : base(epsilon) { }
+        public GaussSeidelSielSolver(double epsilon, int cantDecimales) : base(epsilon,cantDecimales) { }
 
         protected override List<double> resolverSegunEstrategia(List<List<double>> matrizCoeficientes, int tamanioMatrizCoeficientes, List<double> terminosIndependientes, List<double> incognitas)
         {
@@ -22,7 +22,7 @@ namespace TPMatematicaSuperiorSIEL.SielSolver
                         proximoValor += matrizCoeficientes[i][j] * incognitas[j];
                     }
                 }
-                incognitas.Insert(i,(terminosIndependientes[i] - proximoValor) / matrizCoeficientes[i][i]);
+                incognitas.Insert(i,Math.Round((terminosIndependientes[i] - proximoValor) / matrizCoeficientes[i][i],cantDecimales));
             }
                 /*if (criterioConvergencia())
                     return;*/

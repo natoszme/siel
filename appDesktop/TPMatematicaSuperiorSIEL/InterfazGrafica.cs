@@ -140,20 +140,20 @@ namespace TPMatematicaSuperiorSIEL
             }
 
             double epsilon = double.Parse(numUDEpsilon.Value.ToString());
+            int cantDecimales = int.Parse(cantidadDecimales.Value.ToString());
 
             if (epsilon == 0)
             {
                 MessageBox.Show("El epsilon debe ser distinto de 0", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
-
             if (rdbJacobi.Checked == true)
             {
-                new SielSolver.JacobiSielSolver(epsilon).resolver(valoresIniciales, matrizCoeficientes, tamañoMatriz, terminosIndependientes);                
+                new SielSolver.JacobiSielSolver(epsilon,cantDecimales).resolver(valoresIniciales, matrizCoeficientes, tamañoMatriz, terminosIndependientes);                
             }
             else
             {
-                new SielSolver.GaussSeidelSielSolver(epsilon).resolver(valoresIniciales, matrizCoeficientes, tamañoMatriz, terminosIndependientes);
+                new SielSolver.GaussSeidelSielSolver(epsilon,cantDecimales).resolver(valoresIniciales, matrizCoeficientes, tamañoMatriz, terminosIndependientes);
             }
 
         }
@@ -170,9 +170,10 @@ namespace TPMatematicaSuperiorSIEL
                 DialogResult respuestaNoDiagonalidad = MessageBox.Show("La matriz de coeficientes ingresada no es diagonalmente dominante. ¿Desea modificarla?", "Información", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
 
                 if (respuestaNoDiagonalidad == System.Windows.Forms.DialogResult.Yes)
-                {
-                    return false;
+                {   
+                   return false;
                 }
+         
             }
 
             return true;
@@ -295,6 +296,7 @@ namespace TPMatematicaSuperiorSIEL
         {
             Action<Control.ControlCollection> funcionBorrado = null;
             lblTipoMatriz.Text = "Tipo de matriz: ";
+
             funcionBorrado = (controles) =>
             {
                 foreach (Control txt in controles)
@@ -309,6 +311,8 @@ namespace TPMatematicaSuperiorSIEL
             };
 
             funcionBorrado(Controls);
+            cantidadDecimales.Value = 0;
+            numUDEpsilon.Value = 0.00000000M;
         }
 
 

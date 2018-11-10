@@ -8,7 +8,7 @@ namespace TPMatematicaSuperiorSIEL.SielSolver
 {
     public class JacobiSielSolver : SielSolver
     {
-        public JacobiSielSolver(double epsilon) : base(epsilon) { }
+        public JacobiSielSolver(double epsilon,int cantDecimales) : base(epsilon, cantDecimales) { }
 
         protected override List<double> resolverSegunEstrategia(List<List<double>> matrizCoeficientes, int tamañoMatrizCoeficientes, List<double> terminosIndependientes, List<double> incognitas)
         {
@@ -24,7 +24,7 @@ namespace TPMatematicaSuperiorSIEL.SielSolver
                     }
                 }
                 proximoValor = proximoValor / matrizCoeficientes[i][i];
-                proximasIncognitas.Insert(i, proximoValor);
+                proximasIncognitas.Insert(i, Math.Round(proximoValor,cantDecimales));
             }
             
            // this.Hide();

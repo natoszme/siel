@@ -11,11 +11,14 @@ namespace TPMatematicaSuperiorSIEL.SielSolver
         public List<CriterioDeParo.CriterioDeParo> criteriosDeParo = new List<CriterioDeParo.CriterioDeParo>();
         public List<PasoDeResolucion> pasos = new List<PasoDeResolucion>();
 
-        public SielSolver(double epsilon)
+        protected int cantDecimales;
+        public SielSolver(double epsilon,int cantDecimales)
         {
             criteriosDeParo.Add(new CriterioDeParo.CriterioAbsoluto(epsilon));
             criteriosDeParo.Add(new CriterioDeParo.CriterioRelativo(epsilon));
+            this.cantDecimales = cantDecimales;
         }
+
 
         public void resolver(List<double> vectorInicial,List<List<double>> matrizCoeficientes, int cantidadEcuaciones, List<double> terminosIndependientes)
         {
