@@ -141,6 +141,12 @@ namespace TPMatematicaSuperiorSIEL
 
             double epsilon = double.Parse(numUDEpsilon.Value.ToString());
 
+            if (epsilon == 0)
+            {
+                MessageBox.Show("El epsilon debe ser distinto de 0", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
             if (rdbJacobi.Checked == true)
             {
                 new SielSolver.JacobiSielSolver(epsilon).resolver(valoresIniciales, matrizCoeficientes, tamañoMatriz, terminosIndependientes);                
