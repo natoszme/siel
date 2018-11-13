@@ -133,27 +133,29 @@ namespace TPMatematicaSuperiorSIEL
                 return;
             }
 
-            bool seguir = seguirEnBaseADiagonalidad(matrizCoeficientes);
-            if (!seguir)
-            {
-                return;
-            }
-
             double epsilon = double.Parse(numUDEpsilon.Value.ToString());
-            int cantDecimales = int.Parse(cantidadDecimales.Value.ToString());
 
             if (epsilon == 0)
             {
                 MessageBox.Show("El epsilon debe ser distinto de 0", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
+
+            bool seguir = seguirEnBaseADiagonalidad(matrizCoeficientes);
+            if (!seguir)
+            {
+                return;
+            }
+            
+            int cantDecimales = int.Parse(cantidadDecimales.Value.ToString());
+           
             if (rdbJacobi.Checked == true)
             {
-                new SielSolver.JacobiSielSolver(epsilon,cantDecimales).resolver(valoresIniciales, matrizCoeficientes, tamañoMatriz, terminosIndependientes);                
+                new SielSolver.JacobiSielSolver(epsilon, cantDecimales).resolver(valoresIniciales, matrizCoeficientes, tamañoMatriz, terminosIndependientes);                
             }
             else
             {
-                new SielSolver.GaussSeidelSielSolver(epsilon,cantDecimales).resolver(valoresIniciales, matrizCoeficientes, tamañoMatriz, terminosIndependientes);
+                new SielSolver.GaussSeidelSielSolver(epsilon, cantDecimales).resolver(valoresIniciales, matrizCoeficientes, tamañoMatriz, terminosIndependientes);
             }
 
         }
