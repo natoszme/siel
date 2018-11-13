@@ -37,11 +37,12 @@ namespace TPMatematicaSuperiorSIEL.SielSolver
             }
             else
             {
-                PasoDeResolucion pasoFinal = new PasoDeResolucion();
+                /*PasoDeResolucion pasoFinal = new PasoDeResolucion();
                 pasoFinal.setearValoresDeIncognitas(vectorCalculado);
                 criteriosDeParo.ForEach(criterio => pasoFinal.cargarCriterioFinal());
 
-                pasos.Add(pasoFinal); 
+                pasos.Add(pasoFinal); */
+                
                 Resultados formResultados = new Resultados(pasos);
                 formResultados.ShowDialog();
             }
