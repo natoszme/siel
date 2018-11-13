@@ -12,17 +12,23 @@ namespace TPMatematicaSuperiorSIEL.SielSolver
 
         protected override List<double> resolverSegunEstrategia(List<List<double>> matrizCoeficientes, int tamanioMatrizCoeficientes, List<double> terminosIndependientes, List<double> incognitas)
         {
-            for(int i = 0; i < tamanioMatrizCoeficientes; i++)
+            List<double> proximasIncognitas = new List<double>();
+            for (int i = 0; i < tamanioMatrizCoeficientes; i++)
             {
-                double proximoValor = 0;
-                for(int j = 0; j < tamanioMatrizCoeficientes; j++)
+                double proximoValor = terminosIndependientes[i];
+                for (int j = 0; j < tamanioMatrizCoeficientes; j++)
                 {
-                    if (i != j)
+                    if (i < j)
                     {
-                        proximoValor += matrizCoeficientes[i][j] * incognitas[j];
+                        proximoValor -= matrizCoeficientes[i][j] * incognitas[j];
+                    }
+                    if (i > j)
+                    {
+                        proximoValor -= matrizCoeficientes[i][j] * proximasIncognitas[j];
                     }
                 }
-                incognitas.Insert(i,Math.Round((terminosIndependientes[i] - proximoValor) / matrizCoeficientes[i][i],cantDecimales));
+                proximoValor = proximoValor / matrizCoeficientes[i][i];
+                proximasIncognitas.Insert(i, Math.Round(proximoValor, cantDecimales));
             }
                 /*if (criterioConvergencia())
                     return;*/
