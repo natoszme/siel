@@ -35,7 +35,7 @@ namespace TPMatematicaSuperiorSIEL.SielSolver
                 //resolverSegunEstrategia(matrizCoeficientes, tamanioMatrizCoeficientes, terminosIndependientes, incognitas);
 
             //TODO
-            return incognitas;
+            return proximasIncognitas;
         }
     }
 }
