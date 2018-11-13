@@ -22,6 +22,8 @@ namespace TPMatematicaSuperiorSIEL
 
         private void Form1_Load(object sender, EventArgs e)
         {
+            numUDEpsilon.Value = Convert.ToDecimal(.001);
+            numUDcantidadDecimales.Value = 4;
             generarInputs();
         }
 
@@ -147,7 +149,7 @@ namespace TPMatematicaSuperiorSIEL
                 return;
             }
             
-            int cantDecimales = int.Parse(cantidadDecimales.Value.ToString());
+            int cantDecimales = int.Parse(numUDcantidadDecimales.Value.ToString());
            
             if (rdbJacobi.Checked == true)
             {
@@ -164,7 +166,7 @@ namespace TPMatematicaSuperiorSIEL
         {
             AnalizadorMatriz.DiagonalidadMatriz tipoDiagonalidad = AnalizadorMatriz.obtenerDiagonalidad(coeficientes, tamañoMatriz);
             lblTipoMatriz.Text = "Tipo de matriz: ";
-            lblTipoMatriz.Text += AnalizadorMatriz.aString(tipoDiagonalidad);
+            lblTipoMatriz.Text += "\n" + AnalizadorMatriz.aString(tipoDiagonalidad);
             
 
             if (tipoDiagonalidad == AnalizadorMatriz.DiagonalidadMatriz.NoDominante)
@@ -313,7 +315,7 @@ namespace TPMatematicaSuperiorSIEL
             };
 
             funcionBorrado(Controls);
-            cantidadDecimales.Value = 0;
+            numUDcantidadDecimales.Value = 0;
             numUDEpsilon.Value = 0.00000000M;
         }
 
