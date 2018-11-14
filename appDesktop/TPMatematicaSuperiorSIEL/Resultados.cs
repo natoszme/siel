@@ -28,20 +28,21 @@ namespace TPMatematicaSuperiorSIEL
 
         void mostrarResultadosEnTabla()
         {
-            dgvResultados.ColumnCount = resultados[0].valoresDeIncognitas.Count + resultados[0].cumpleCriterioDeParo.Count;
+            dgvResultados.ColumnCount = 1 + resultados[0].valoresDeIncognitas.Count + resultados[0].cumpleCriterioDeParo.Count;
+            dgvResultados.Columns[0].HeaderText = "Nº paso";
             for (int r = 0; r < resultados[0].valoresDeIncognitas.Count; r++)
             {
-                dgvResultados.Columns[r].HeaderText = "X" + r;
+                dgvResultados.Columns[r + 1].HeaderText = "X" + r;
             }
             for (int r = 0; r < resultados[0].cumpleCriterioDeParo.Count; r++)
             {
                 switch(r){
                     case 0:{
-                        dgvResultados.Columns[r + resultados[0].valoresDeIncognitas.Count].HeaderText = "Criterio Absoluto";
+                        dgvResultados.Columns[r + 1 + resultados[0].valoresDeIncognitas.Count].HeaderText = "Criterio Absoluto";
                     }break;
                     case 1:
                     {
-                        dgvResultados.Columns[r + resultados[0].valoresDeIncognitas.Count].HeaderText = "Criterio Relativo";
+                        dgvResultados.Columns[r + 1 + resultados[0].valoresDeIncognitas.Count].HeaderText = "Criterio Relativo";
                     } break;
                 }
                 
@@ -51,13 +52,15 @@ namespace TPMatematicaSuperiorSIEL
                 DataGridViewRow row = new DataGridViewRow();
                 row.CreateCells(dgvResultados);
 
+                row.Cells[0].Value = r;
+
                 for (int c = 0; c < resultados[0].valoresDeIncognitas.Count; c++)
                 {
-                    row.Cells[c].Value = resultados[r].valoresDeIncognitas[c];
+                    row.Cells[c + 1].Value = resultados[r].valoresDeIncognitas[c];
                 }
                 for (int cCriterio = 0; cCriterio < resultados[0].cumpleCriterioDeParo.Count; cCriterio++)
                 {
-                    row.Cells[resultados[0].valoresDeIncognitas.Count + cCriterio].Value = resultados[r].cumpleCriterioDeParo[cCriterio];
+                    row.Cells[resultados[0].valoresDeIncognitas.Count + 1 + cCriterio].Value = resultados[r].cumpleCriterioDeParo[cCriterio];
          
                 }
 
