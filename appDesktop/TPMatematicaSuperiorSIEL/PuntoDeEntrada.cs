@@ -21,7 +21,14 @@ namespace TPMatematicaSuperiorSIEL
         {
             try
             {
-                int cantidadEcuaciones = int.Parse( txtCant.Text);
+                int cantidadEcuaciones = int.Parse(txtCant.Text);
+
+                if (cantidadEcuaciones < 1)
+                {
+                    MessageBox.Show("El sistema debe tener al menos una ecuacion", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+
                 InterfazGrafica formRoles = new InterfazGrafica(cantidadEcuaciones);
                 this.Hide();
                 formRoles.Show();
