@@ -35,13 +35,14 @@
             // 
             // dgvResultados
             // 
-            this.dgvResultados.BackgroundColor = System.Drawing.SystemColors.ButtonShadow;
+            this.dgvResultados.BackgroundColor = System.Drawing.SystemColors.ActiveBorder;
             this.dgvResultados.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvResultados.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgvResultados.Location = new System.Drawing.Point(0, 0);
             this.dgvResultados.Name = "dgvResultados";
             this.dgvResultados.Size = new System.Drawing.Size(704, 316);
             this.dgvResultados.TabIndex = 0;
+            this.dgvResultados.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvResultados_CellContentClick);
             // 
             // Resultados
             // 

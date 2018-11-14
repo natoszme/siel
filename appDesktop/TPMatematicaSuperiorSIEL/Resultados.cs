@@ -67,5 +67,10 @@ namespace TPMatematicaSuperiorSIEL
                 dgvResultados.Rows.Add(row);
             }
         }
+
+        private void dgvResultados_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
     }
 }
