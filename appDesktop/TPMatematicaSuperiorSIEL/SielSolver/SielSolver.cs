@@ -31,7 +31,7 @@ namespace TPMatematicaSuperiorSIEL.SielSolver
             //Cargo al paso de resolucion el resultado del criterio de paro para esa iteracion
             criteriosDeParo.ForEach(criterio=> paso.cargarCriterio(criterio.hayQueSeguir(vectorInicial,vectorCalculado)));
             pasos.Add(paso);
-            if (pasos.Count >= 50)
+            if (pasos.Count >= 200)
             {
                 Resultados formResultados = new Resultados(pasos);
                 formResultados.ShowDialog();
