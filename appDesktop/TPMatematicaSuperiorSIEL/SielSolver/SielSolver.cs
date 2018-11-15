@@ -30,7 +30,13 @@ namespace TPMatematicaSuperiorSIEL.SielSolver
              
             //Cargo al paso de resolucion el resultado del criterio de paro para esa iteracion
             criteriosDeParo.ForEach(criterio=> paso.cargarCriterio(criterio.hayQueSeguir(vectorInicial,vectorCalculado)));
-            pasos.Add(paso); 
+            pasos.Add(paso);
+            if (pasos.Count >= 50)
+            {
+                Resultados formResultados = new Resultados(pasos);
+                formResultados.ShowDialog();
+                return;
+            }
             if (criteriosDeParo.Any(criterio => criterio.hayQueSeguir(vectorInicial, vectorCalculado)))
             {
                 resolver(vectorCalculado, matrizCoeficientes, cantidadEcuaciones, terminosIndependientes);
